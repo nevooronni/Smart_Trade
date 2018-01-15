@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
+<<<<<<< HEAD
+=======
+    'bootstrap3'
+>>>>>>> 8594117adb0bf962a2b05730b5e1b051d4436c42
 ]
 
 MIDDLEWARE = [
@@ -63,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
