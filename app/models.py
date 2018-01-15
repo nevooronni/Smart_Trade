@@ -5,13 +5,12 @@ from django.db.models.signals import post_save
 from django.db.models import Q, signals
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
-from email_field.modelfields import EamilField
+# from email_field.modelfields import EmailField
 
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
     phone_number = PhoneNumberField()
     locatiom = models.CharField(max_length=140, blank=True)
