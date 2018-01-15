@@ -7,6 +7,7 @@ h1
   background-color: #323a48;
   border-bottom: 4px solid #191c27;
   border-radius: 0px;
+  margin-bottom: 0px;
 }
 
 .glyphicon {
@@ -35,6 +36,19 @@ h1
   width: 100%;
 }
 
+.jumbotron {
+  background-image: url();
+}
+
+
+.grey {
+  color: grey;
+}
+
+#color {
+  color: #323a48;
+}
+
 #logo {
   background-color: rgb(255, 119, 0);
   color: #fff;
@@ -48,6 +62,12 @@ h1
   height: 71px;
   width: 100px;
   border-radius: 0px;
+  color: #fff;
+  background-color: transparent;
+}
+
+#login:hover {
+  background-color: rgba(0,0,0,.7);
 }
 
 /*#login2 {
