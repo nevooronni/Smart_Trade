@@ -44,10 +44,19 @@ h1
 }
 
 #login {
-  height: 50px;
+  margin-top: -24%;
+  height: 71px;
   width: 100px;
+  border-radius: 0px;
 }
 
+/*#login2 {
+  margin-top: -24%;
+  height: 71px;
+  width: 120px;
+  border-radius: 0px;
+}
+*/
 #smart {
   color: #fff;
   font-weight: bold;
