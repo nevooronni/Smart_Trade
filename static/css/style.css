@@ -1,0 +1,85 @@
+h1
+{
+  color: green;
+}
+
+.navbar-inverse {
+  background-color: #323a48;
+  border-bottom: 4px solid #191c27;
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.glyphicon {
+  color: #fff;
+}
+
+/*.glyphicon-signal {
+  background-color: rgb(255, 119, 0);
+  color: #fff;
+  border-radius: 50%;
+  text-decoration: none;
+  z-index: 5;
+}
+
+.glyphicon-signal {
+  background-color: rgb(255, 119, 0);
+  color: #fff;
+  border-radius: 50%;
+  text-decoration: none;  
+}
+*/
+.navbar-header {
+  padding-top: 0.5%;
+  padding-left: 3%;
+  padding-bottom: 0.5%;
+  width: 100%;
+}
+
+.jumbotron {
+  background-image: url();
+}
+
+
+.grey {
+  color: grey;
+}
+
+#color {
+  color: #323a48;
+}
+
+#logo {
+  background-color: rgb(255, 119, 0);
+  color: #fff;
+  border-radius: 50%;
+  text-decoration: none; 
+  margin-right: 1%;   
+}
+
+#login {
+  margin-top: -24%;
+  height: 71px;
+  width: 100px;
+  border-radius: 0px;
+  color: #fff;
+  background-color: transparent;
+}
+
+#login:hover {
+  background-color: rgba(0,0,0,.7);
+}
+
+/*#login2 {
+  margin-top: -24%;
+  height: 71px;
+  width: 120px;
+  border-radius: 0px;
+}
+*/
+#smart {
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
+  margin-left: ;
+}
