@@ -45,6 +45,11 @@ h1
   color: grey;
 }
 
+#panel-body {
+  width: 200px;
+  height: 200px;
+}
+
 #color {
   color: #323a48;
 }
