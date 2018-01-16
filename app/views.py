@@ -1,4 +1,3 @@
-<< << << < HEAD
 from django.shortcuts import render, redirect
 from django.conf.urls import url
 from django.http import HttpResponse, Http404, HttpResponseRedirect
