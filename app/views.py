@@ -1,21 +1,18 @@
-<<<<<<< HEAD
+<< << << < HEAD
 from django.shortcuts import render, redirect
 from django.conf.urls import url
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 
 from .email import send_welcome_email
-=======
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.conf.urls import url
-from django.http import HttpResponse,Http404,HttpResponseRedirect
-from .models import Product,Profile
->>>>>>> 9fff37582771a5b9fbfd826b8060adfbdcd59563
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from .models import Product, Profile
 
 # Create your views here.
 
 
 def landing_page(request):
-<<<<<<< HEAD
     return render(request, 'all-app/landing_page.html')
 
 
@@ -23,10 +20,8 @@ def post(request, pk):
     post = Post.objects.get(pk=post_id)
 
     return render(request, 'all-app/post.html')
-=======
-	return render(request,'all-app/landing_page.html')
 
-def index(request):    
-	all_products = Product.get_all_products()
-	return render(request, 'index.html',{"products": all_products})
->>>>>>> 9fff37582771a5b9fbfd826b8060adfbdcd59563
+
+def index(request):
+    all_products = Product.get_all_products()
+    return render(request, 'index.html', {"products": all_products})
