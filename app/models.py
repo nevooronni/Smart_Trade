@@ -59,30 +59,42 @@ def save_user_profile(sender, instance, **kwargs):
     post_save.connect(create_user_profile, sender=User)
 
 
-# class Post(models.Model):
-#     user = models.ForeignKey(User)
-#     post_image = models.ImageField(upload_to='posts/', null=True, blank=True)
-#     title = models.CharField(max_length=60)
-#
-#     def __str__(self):
-#         return self.title
-#
-#     @classmethod
-#     def get_posts(cls):
-#         posts = cls.objects.all()
-#
-#     @classmethod
-#     def display_posts(cls):
-#         posts = cls.objects.all()
-#         return posts
-#
-#     @property
-#     def image_url(self):
-#         if self.image and hasattr(self.image, 'url'):
-#             return self.image.url
-#
-#     @classmethod
-#     def get_single_post(cls, pk):
-#         post = cls.objects.get(pk=pk)
-#
-#         return post
+post_save.connect(create_user_profile, sender=User)
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=140, blank=True)
+    unit_quantity = models.FloatField(default=0.0)
+    price = models.FloatField(default=0.0)
+    category = models.CharField(max_length=140, blank=True)
+    description = models.TextField(max_length=140)
+
+    class Meta:
+        ordering = ['category']
+
+    @classmethod
+    def get_all_products(cls):
+        products = cls.objects.all()
+        return products
+
+    @classmethod
+    def get_single_product(cls, pk):
+        product = cls.objects.get(pk=pk)
+        return product
+
+    @classmethod
+    def display_users_products(cls, id):
+        products = cls.objects.filter(user_id=id)
+        return products
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular product instance.
+        """
+        return reverse('product-detail', args=[str(self.id)])
+
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return self.name
