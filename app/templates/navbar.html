@@ -4,19 +4,27 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #login {
+      
+      border-radius: 0px; background-color: transparent; height: 5.7em; width: 7.7em; font-size: 14px;font-weight: ; color: #fff;
+    }
+    #login:hover {
+      background-color: rgba(0,0,0,.7);
+    }
+  </style>
 </head>
 <body>
   <div class="row">
-    <div class="col-xs-12" id="navbar" style="background-color: #323a48; border-bottom: 4px solid #191c27;border-radius: 0px; margin-bottom: 0px; height: 5.4em; padding-top: 1.6em">
+    <div class="col-xs-12" id="navbar" style="background-color: #323a48; border-bottom: 4px solid #191c27;border-radius: 0px; margin-bottom: 0px; height: 5.7em;">
       <div class="row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-11">
-          <span id="span"><i class="glyphicon glyphicon-signal" id="logo" style=""></i></span>
-          <a class="" href="{% url 'landing_page' %}" id="smart">SMART TRADE</a>
-
+        <div class="col-xs-1 col-md-1"></div>
+        <div class="col-xs-12 col-md-9" style="padding-top: 1.2em">
+          <i class="glyphicon glyphicon-signal" style="color: #fff; border-radius: 50%;text-decoration: none; margin-right: 0.3em; font-size: 23px; background-color: rgb(255, 119, 0); height: 50px; width: 50px; padding-top: 0.4em; padding-left: 0.4em;"></i>
+          <a class="" href="{% url 'landing_page' %}" style=" color: #fff; border-radius: 50%;text-decoration: none; margin-right: ; font-size: 30px; font-weight: bold;">SMART TRADE</a>
         </div>
-        <div class="col-xs-1">
-         
+        <div class="col-xs-12 col-md-2">
+          <a href=""><button class="btn" id="login">LOGIN</button></i>
         </div> 
       </div>
     </div>   
