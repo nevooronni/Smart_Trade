@@ -28,38 +28,8 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    # instance.pr# class Post(models.Model):
-    #     user = models.ForeignKey(User)
-    #     post_image = models.ImageField(upload_to='posts/', null=True, blank=True)
-    #     title = models.CharField(max_length=60)
-    #
-    #     def __str__(self):
-    #         return self.title
-    #
-    #     @classmethod
-    #     def get_posts(cls):
-    #         posts = cls.objects.all()
-    #
-    #     @classmethod
-    #     def display_posts(cls):
-    #         posts = cls.objects.all()
-    #         return posts
-    #
-    #     @property
-    #     def image_url(self):
-    #         if self.image and hasattr(self.image, 'url'):
-    #             return self.image.url
-    #
-    #     @classmethod
-    #     def get_single_post(cls, pk):
-    #         post = cls.objects.get(pk=pk)
-    #
-    #         return postofile.save()
 
     post_save.connect(create_user_profile, sender=User)
-
-
-post_save.connect(create_user_profile, sender=User)
 
 
 class Product(models.Model):
