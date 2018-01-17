@@ -1,4 +1,5 @@
 {% extends "registration/base.html" %} 
+{% load static %}
 {% load bootstrap3 %} 
 
 {% block content %}
@@ -28,25 +29,25 @@
     <div class="row">
     <div class="jumbotron" style="height: 49em;">
         <div class="container">
-          <h1 class="text-center" id="c">COMMODITIES TRADING</h1>
+          <h1 class="text-center" id="c"><stron>COMMODITIES TRADING</stron></h1>
          
       
-          <h2 class="text-center color">FAST EASY & RELIABLE</h2>
+          <h2 class="text-center color"><span style="color:  #FF7700; font-weight: bold;">1</span> DEPOSIT <span style="color:  #FF7700; font-weight: bold;">2</span> TRADE & <span style="color:  #FF7700; font-weight: bold;">3</span> WITHDRAW</h2>
           
        
           <h4 class="text-center grey">*Amount to be credited to account in case of successful trade</h4>
         </div>
         <div class="container">
           <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <img src="img/mac.png" class="img-responsive">
+            <div class="col-xs-12 col-md-6" style="padding-top: 10%;">
+              <img src="{% static 'img/mac.png' %}" class="img-responsive" style="height: 250px; width: 650px;">
             </div>
             <div class="col-xs-12 col-md-1"></div>
             <div class="col-xs-12 col-md-4" style="padding-left: 0px;">
               {% if form.errors %}
                 <p> Password or Username is incorrect </p>
                 {% endif %}
-                <div class="panel panel-default" style="width: 25em; height: 29em;">
+                <div class="panel panel-default" style="width: 25em; height: 27em; margin-top: 2.1em;">
 
                   <div class="panel-heading" style="padding-left: 0px; padding-right: 0px; padding-bottom: 3px;">
                     <h3 class="text-center" style="color: #323a48;">OPEN <span style="color: #FF7700;">FREE ACCOUNT</span></h3>
@@ -117,9 +118,9 @@
         <div class="row">
           <div class="col-xs-2"></div>
           <div class="col-xs-8">
-            <span class="social2" id="s1"><a href=""><i class="fa fa-twitter"></i></a></span>
-            <span class="social2" id="s2"><a href=""><i class="fa fa-google"></i></a></span>
-            <span class="social2" id="s3"><a href=""><i class="fa fa-linkedin"></i></a></span>
+           <a href=""><i class="fa fa-twitter" style="color: green;"></i></a>
+            <a href=""><i class="fa fa-google" style="color: green;"></i></a>
+            <a href=""><i class="fa fa-linkedin" style="color: green;"></i></a>
           </div>
           <div class="col-xs-2">
           </div>
