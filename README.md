@@ -37,7 +37,7 @@ These instructions will get you a copy of the project up and running on your loc
   <li>Sqlite 3</li>
  </ul>
 
- ## Technologies Used
+## Technologies Used
 <ul>
   <li>Python3.6</li>
   <li>Postgresql</li>
@@ -45,14 +45,14 @@ These instructions will get you a copy of the project up and running on your loc
   <li>Mpesa-API</li>
  </ul>
 
- ## Known Bugs
- For now the API is not realtime
+## Known Bugs
+ For now the we haven't implemented future trade for all trading commodities.
 
 
- ## Support and contact details
+## Support and contact details
  Please reach out to the Smart_Trade team via this email address <email>smarttrade@gmail.com</email>
 
- ### License
+### License
 MIT
 
 Copyright (c) 2018 **Smart_Trade Team**
