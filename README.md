@@ -31,7 +31,7 @@ These instructions will get you a copy of the project up and running on your loc
     <li><code>python3.6 manage.py server</code></li>
   </ul>
 
-## Prerequisites
+## Prerequisites.
 <ul>
   <li>Python3.6</li>
   <li>Sqlite 3</li>
