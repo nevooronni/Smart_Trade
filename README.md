@@ -7,7 +7,7 @@ An online trading platform in cash and future trading application.
 
 This web app will allow farmers and consumers to trade online and exchange good and services online at ease and with less cost at a negotiable price and also at an agreed time.
 
-The web application will also have a place where buyers can see what is being sold and also seller will be able to see willing buyers who may want to get in to a negotiable contract where they will go in to a contract at an agreed schedule where the applications allows online payments which can be done by two parties after getting into a contract.
+The web application will also have a place where buyers can see what is being sold and also seller will be able to see willing buyers who may want to get in to a negotiable contract where they will go in to a contract at an agreed schedule where the applications allows online payments which can be done by two parties after getting into a solid contract.
 
 
 
