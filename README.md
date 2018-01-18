@@ -34,7 +34,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Prerequisites.
 <ul>
   <li>Python3.6</li>
-  <li>Sqlite 3</li>
+  <li>Postgresql</li>
  </ul>
 
 ## Technologies Used
