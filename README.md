@@ -1,5 +1,5 @@
 # Smart_Trade
-An online trading platform in cash and future trading application
+An online trading platform in cash and future trading application.
 
 #### Created by [Grantone Mchana](https://github.com/Grantone) , [Neville Oronni](https://github.com/nevooroni) and [Khalid Hashi](https://github.com/khalid604)
 
