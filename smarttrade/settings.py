@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
     'bootstrap3',
-    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -66,8 +65,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
                 'django.template.context_processors.media',
             ],
         },
@@ -108,18 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = (
-    'social-core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOpenId',  # for Google authentication
-    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
-    'social_core.backends.github.GithubOAuth2',  # for Github authentication
-    'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
-    'django.contrib.auth.backends.ModelBackend', #make sure user is still able to log in using django default authentication
-)
-
-
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'landing_page'
+ 
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

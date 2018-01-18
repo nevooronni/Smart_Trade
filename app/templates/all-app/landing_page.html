@@ -1,4 +1,6 @@
 {% extends 'all-app/base.html' %}
+{% load static %}
+{% load bootstrap3 %} 
 
 {% block content %}
 {{bock.super}}
@@ -28,16 +30,6 @@
                   </div>
                   <div class="panel-body">
 
-                    <form action="/accounts/login/" method="post">
-                      {% csrf_token %} {% bootstrap_form form%}
-
-                      <div class="form-group">
-                        <input type="submit" class="btn btn-primary btn-sm" value="Login">
-                      </div>
-
-                      <input type="hidden" name="next" value="{{next}}">
-
-                    </form>
                     <p class="text-center">Don't have an account?<br>
                       <a href="/accounts/registration/">Create an official account </a>
                     </p>

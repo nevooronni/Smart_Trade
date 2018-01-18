@@ -1,32 +1,131 @@
-{% extends "registration/base.html" %} {% load bootstrap3 %}
+{% extends "registration/base.html" %} 
+{% load static %}
+{% load bootstrap3 %} 
+
 {% block content %}
-  <div class="row">
-    <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      {% if form.errors %}
-        <p> Some Information Might be Incorrect </p>
-      {% endif %}
-      <div class="panel panel-default" id="panel-default">
-        <div class="panel-body" id="panel-body">
-          <h3 class="text-center">OPEN A FREE ACCOUNT</h3>
-          <form  action="/accounts/register/" method="post">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
-            </div>
+{{bock.super}}
+    <style>
+      .color {
+        color: #323a48;
+      }
 
-            <input type="hidden" name="next" value="{{next}}">
+      .grey {
+         color: grey;
+      }
 
-          </form>
+      .grey:hover {
+        text-decoration: none;
+      }
 
+      #c {
+        color: #323a48;
+      }
+
+      #c:hover {
+        text-decoration: none;
+      }
+
+      .jumbotron a:hover {
+        text-decoration: none;
+      }
+
+    </style>
+    <div class="row">
+    <div class="jumbotron" style="height: 69em;">
+        <div class="container">
+          <h1 class="text-center" style="color: #323a48;"><stron>COMMODITIES TRADING</stron></h1>
+         
+      
+          <h2 class="text-center color"><span style="color:  #FF7700; font-weight: bold;">1</span> DEPOSIT <span style="color:  #FF7700; font-weight: bold;">2</span> TRADE & <span style="color:  #FF7700; font-weight: bold;">3</span> WITHDRAW</h2>
+          
+       
+          <h4 class="text-center grey">*Amount to be credited to account in case of successful trade</h4>
         </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-md-6" style="padding-top: 10%;">
+              <img src="{% static 'img/mac.png' %}" class="img-responsive" style="height: 250px; width: 650px;">
+            </div>
+            <div class="col-xs-12 col-md-1"></div>
+            <div class="col-xs-12 col-md-4" style="padding-left: 0px;">
+              {% if form.errors %}
+                <p> Some Information Might be Incorrect</p>
+              {% endif %}
+              <div class="panel panel-default" style="width: 25em; height: 48em; margin-top: 2.1em;">
+                <div class="panel-body"  style="padding-top: 0px;">
+                  <h3 class="text-center" style="color: #323a48;">OPEN <span style="color: #FF7700;">FREE ACCOUNT</span></h3>
+                  <form  action="/accounts/register/" method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-primary btn-sm" value="REGISTER" style="width: 26.5em; height: 3.2em; background-color: #54ae2a; border-radius: 2px; font-weight: bold;"">
+                    </div>
 
-      </div>
+                    <input type="hidden" name="next" value="{{next}}">
 
+                  </form>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>  
     </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
-  </div>
+    </div>
+    <div class="row" style="padding-top: 2.8em; padding-bottom: 2.8em; margin-bottom: 3.1em;">
+      <div class="col-xs-12">
+        <div class="row" style="margin-bottom: 2em;">
+          <div class="col-xs-2 col-md-4">
+          </div>
+          <div class="col-xs-8 col-md-12">
+            <h2 class="text-center" id="platform"><strong>OUR PLATFORM IS YOUR OPPORTUNITY</strong></h2>
+          </div>
+          <div class="col-xs-2 col-md-4">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-md-2">
+          </div>
+          <div class="col-xs-12 col-md-8">
+            <div class="row">
+              <div class="col-xs-12 col-md-3">
+                <h4 class="text-center" style="color: rgb(255, 119, 0);"><strong>TRADING</strong></h4>
+                <p class="text-center" style="color: #323a48; font-size: 17px;">Buy a wide range of commodities fast,cheaply and convinietly.</p>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <h4 class="text-center" style="color: rgb(255, 119, 0);"><strong>FUTURES</strong></h4>
+                <p class="text-center" style="color: #323a48; font-size: 17px;">Buy Futures for specific commodities to hedge against risk.</p>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <h4 class="text-center" style="color: rgb(255, 119, 0);"><strong>ONLINE PAYMENT</strong></h4>
+                <p class="text-center" style="color: #323a48; font-size: 17px;">Pay for your trades online using Mpesa and get your details.</p>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <h4 class="text-center" style="color: rgb(255, 119, 0);"><strong>DELIVERY</strong></h4>
+                <p class="text-center" style="color: #323a48; font-size: 17px;">Physical delivery of the commodities at your request anytime.</p>  
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" style="background-color: rgba(0,0,0,.7); height: 3.2em; position: fixed; bottom: 0px; margin-left: 1em; border-top-color: #FF7700; border-top-width: 13px;">
+        <div class="row">
+          <div class="col-xs-2"></div>
+          <div class="col-xs-8">
+           <a href=""><i class="fa fa-twitter" style="color: green;"></i></a>
+            <a href=""><i class="fa fa-google" style="color: green;"></i></a>
+            <a href=""><i class="fa fa-linkedin" style="color: green;"></i></a>
+          </div>
+          <div class="col-xs-2">
+          </div>
+        </div>
+      </div>
+    </div>
 {% endblock %}
+      
+  
