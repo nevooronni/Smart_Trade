@@ -4,18 +4,89 @@
 
 {% block content %}
 {{bock.super}}
-    <div class="row">
-      <div class="col-sm-1 col-md-1" style="background-color: #323a48; height: auto; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
-        <span><i class="glyphicon glyphicon-user"></i></span>
-        <h3>PROFILE</h3>
+    <style>
+       .viewall {
+         border-radius: 0px; background-color: #FF7700; color: #fff; width: 90px; margin-left: 20%; margin-top: 5%;
+       }
+
+        .viewall:hover {
+          color: #FF7700;
+          background-color: #fff;
+        }
+    </style>
+    <div class="row" style="height: ;">
+      <div class="col-sm-1 col-md-1 active" style="background-color: #323a48; height: 715.5px; min-height: 100%; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+            <span style="margin-left: 10%;"><i class="glyphicon glyphicon-user" style="font-size: 40px; color: grey ;"></i></span>
+            <h5 style="color: grey;">PROFILE</h5>
+          </div>
+          <div class="col-xs-4 col-md-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;>
+            <span style="margin-left: 10%;""><i class="glyphicon glyphicon-signal" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey;">TRADE</h5>
+          </div>
+          <div class="col-xs-4 col-md-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-sort" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey;">FUTURES</h5>  
+          </div>
+          <div class="col-xs-4 col-md-2"></div> 
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-equalizer" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey;">MARKET ANALYSIS</h5>  
+          </div>
+          <div class="col-xs-4 col-md-2"></div> 
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-info-sign" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey; margin-left: 7%;">ABOUT</h5>  
+          </div>
+          <div class="col-xs-14 col-md-2"></div> 
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-question-sign" style="font-size: 40px; color: grey;""></i></span>
+            <h5 class="text-center" style="color: grey;">HELP</h5>  
+          </div>
+          <div class="col-xs-4 col-md-2"></div> 
+        </div>
       </div>
-      <div class="col-sm-2 col-md-2" style="background-color: #323a48; height: auto; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
-        <span><i class="glyphicon glyphicon-signal"></i></span>
-        <h3>TRADE</h3>
+      <div class="col-sm-2 col-md-2" style="background-color: #323a48; height: 715.5px; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
+        <div class="row">
+          <div class="col-md-12" style="padding-top: 5%; padding-left: 10%; padding-right: 10%;  padding-bottom: 8%; border-bottom-color: grey; border-bottom-width: 2px; border-bottom-style: solid;">
+            <h4 class="text-center" style="color: #fff;">AGRICULTURE</h4>
+            <p class="text-left" style="color: grey;">Smart Trade is  the center of trading in agricultural commodities. We offer futures and options on the leading softs markets including coffee, cocoa, cotton, sugar and frozen concentrated orange juice, as well as a wide range of grains futures and options, including the leading canola futures contract.
+            </p>
+            <button class="btn viewall">View All</button>
+            <p class="" style="color: #03AB42; margin-top: 5%; margin-left: 16%;font-weight: bold;">13 Commodities</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" style="padding-top: 5%; padding-left: 10%; padding-right: 10%;  padding-bottom: 0px;">
+            <h4 class="text-center" style="color: #fff;">LIVESTOCK/MEAT</h4>
+            <p class="text-left" style="color: grey;">Smart Trade provides central trading in livestock. We offer futures and options on the leading markets including live cattle, feeder cattle, pork bellies, goat, as well as a wide range of meat futures and options, including the leading lean hogs contract.
+            </p>
+            <button class="btn viewall">View All</button>  
+            <p class="" style="color: #03AB42; margin-top: 5%; margin-left: 17%; font-weight: bold;">Comming Soon</p>  
+          </div>
+        </div>
       </div>
-      <div class="col-sm-9 col-9" style="background-color: #323a48; height: auto; border-bottom-width: 2px; border-bottom-color: grey;">
-        <span><i class="glyphicon glyphicon-user"></i></span>
-        <h3>FUTURES</h3>
+      <div class="col-sm-9 col-9" style="background-color: #323a48; height: 715.5px; border-bottom-width: 2px; border-bottom-color: grey;">
+        
       </div>
     </div>
 
