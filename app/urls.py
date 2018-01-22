@@ -6,6 +6,7 @@ from . import views
 urlpatterns=[
 	url('^$',views.landing_page,name="landing_page"),
 	url('^index/$',views.index,name = "index"),	
+	url('^sell/$',views.sell,name = "sell"),
 ]
 
 if settings.DEBUG:

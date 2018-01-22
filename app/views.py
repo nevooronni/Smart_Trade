@@ -12,3 +12,8 @@ def landing_page(request):
 @login_required(login_url = '/accounts/login/')
 def index(request):
 	return render(request,'all-app/index.html')
+
+@login_required(login_url = '/all-app/sell')
+def sell(request):
+	
+	return render(request,'all-app/sell.html')
