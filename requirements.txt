@@ -1,6 +1,6 @@
 Babel==2.5.1
 confusable-homoglyphs==2.0.2
-Django==2.0.1
+Django==1.8
 django-bootstrap==0.2.4
 django-bootstrap3==9.1.0
 django-phonenumber-field==2.0.0

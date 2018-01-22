@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'smarttrade.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'smart',
         'USER': 'nevo',
     'PASSWORD':'speeds01',
