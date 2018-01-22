@@ -13,7 +13,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
     phone_number = PhoneNumberField()
-    locatiom = models.CharField(max_length=140, blank=True)
+    location = models.CharField(max_length=140, blank=True)
     email = models.EmailField(max_length=140, blank=True)
 
 
