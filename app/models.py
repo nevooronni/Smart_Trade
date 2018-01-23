@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.db.models import Q, signals
@@ -16,7 +15,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=140, blank=True)
     last_name = models.CharField(max_length=140, blank=True)
     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
-    phone_number = PhoneNumberField()
+    phone_number = PhoneNumberField(max_length = 10, blank = True)
     location = models.CharField(max_length=140, blank=True)
     email = models.EmailField(max_length=140, blank=True)
 
@@ -37,8 +36,6 @@ post_save.connect(create_user_profile, sender=User)
 
 class Product(models.Model):
     name = models.CharField(max_length=140,blank=True)
-    seller = models.ManyToManyField('Seller')
-    buyer =  models.ManyToManyField('Buyer')
     quantity = models.DecimalField( max_digits=19, decimal_places=10)
     price  =  models.DecimalField( max_digits=19, decimal_places=10)
     unit_price = models.DecimalField( max_digits=19, decimal_places=10)
@@ -58,9 +55,9 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-class Seller(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'seller')
-    account_number = models.IntegerField()
+class Sell(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'sell')
+    product =  models.ForeignKey(Product,on_delete=models.CASCADE, related_name= 'sell')
 
     @classmethod
     def display_buyers(cls):
