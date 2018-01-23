@@ -33,4 +33,4 @@ post_save.connect(create_user_profile, sender=User)
 
 class Product(models.Model):
 	name = models.CharField(max_length=140, blank=True)
-
+	price = models.IntegerField() 
