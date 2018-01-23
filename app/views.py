@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import Product,Profile,Cart,ItemManager,Item,Buyer,Seller,Category
-from cart import *
+from .cart import *
 from django.views import generic
 from django.shortcuts import render, redirect
 from django.http import Http404
