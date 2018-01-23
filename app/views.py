@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
     all_products = Product.objects.all()
-	return render(request,'all-app/landing_page.html',{"products":all_products})
+    return render(request,'all-app/landing_page.html',{"products":all_products})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):

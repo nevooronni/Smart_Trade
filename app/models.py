@@ -46,7 +46,7 @@ class Product(models.Model):
     description = models.TextField()
 
     @classmethod
-    def display_products(cls):
+    def display_buyersy_products(cls):
         products = cls.objects.all()
         return products
 
@@ -160,7 +160,4 @@ class Item(models.Model):
         self.content_type = ContentType.objects.get_for_model(type(product))
         self.object_id = product.pk
 
-    product = property(get_product, set_product)
-	name = models.CharField(max_length=140, blank=True)
-	price = models.IntegerField() 
-
+       
