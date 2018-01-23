@@ -8,17 +8,16 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 
+# Create your views here.
 
-
-
-
+@login_required(login_url = '/accounts/login/')
 def landing_page(request):
-	return render(request,'all-app/landing_page.html')
+    all_products = Product.objects.all()
+	return render(request,'all-app/landing_page.html',{"products":all_products})
 
-@login_required(login_url='/accounts/login')
+@login_required(login_url = '/accounts/login/')
 def index(request):
-	all_products = Product.objects.all()
-	return render(request, 'index.html',{"products": all_products})
+	return render(request,'all-app/index.html')
 
 @login_required(login_url='/accounts/login')
 def add_to_cart(request, product_id, quantity):
@@ -34,3 +33,5 @@ def remove_from_cart(request, product_id):
 @login_required(login_url='/accounts/login')
 def get_cart(request):
     return render_to_response('cart.html', dict(cart=Cart(request)))
+
+	

@@ -3,7 +3,7 @@ h1
   color: green;
 }
 
-.navbar-inverse {
+#navbar {
   background-color: #323a48;
   border-bottom: 4px solid #191c27;
   border-radius: 0px;
@@ -29,7 +29,7 @@ h1
   text-decoration: none;  
 }
 */
-.navbar-header {
+#navbar-header {
   padding-top: 0.5%;
   padding-left: 3%;
   padding-bottom: 0.5%;
@@ -37,7 +37,7 @@ h1
 }
 
 .jumbotron {
-  background-image: url();
+  height: 30%;
 }
 
 
@@ -45,16 +45,36 @@ h1
   color: grey;
 }
 
+#footer {
+  background-color: ;
+  height:100px;
+}
+
+#platform {
+  color: #FF7700; 
+}
+
+#panel-body {
+  width: 200px;
+  height: 200px;
+}
+
 #color {
   color: #323a48;
 }
 
 #logo {
-  background-color: rgb(255, 119, 0);
   color: #fff;
   border-radius: 50%;
   text-decoration: none; 
-  margin-right: 1%;   
+  margin-right: ;
+  font-size: 23px;   
+}
+
+#span {
+  
+  height: 140px;
+  width: 140px;
 }
 
 #login {

@@ -11,8 +11,6 @@ from django.contrib.contenttypes.models import ContentType
 
 
 
-
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=140, blank=True)
@@ -20,10 +18,7 @@ class Profile(models.Model):
     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
     phone_number = PhoneNumberField()
     location = models.CharField(max_length=140, blank=True)
-    email = models.EmailField()
-
-
-
+    email = models.EmailField(max_length=140, blank=True)
 
 User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
 
@@ -166,3 +161,6 @@ class Item(models.Model):
         self.object_id = product.pk
 
     product = property(get_product, set_product)
+	name = models.CharField(max_length=140, blank=True)
+	price = models.IntegerField() 
+

@@ -1,5 +1,7 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,18 +15,6 @@
   {% block styles %} 
     {% bootstrap_css %} 
   {% endblock %}
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  {%if title%}
-
-  <title>{{title}}</title>
-
-  {%endif%}
-
-  {% block styles %}
-    {% bootstrap_css %}
-  {% endblock %}
 </head>
 
 <body>
@@ -34,8 +24,8 @@
 
 </body>
 
-</html>
-
+<body>
+  {% include 'navbar.html' %}
   {% block content %}  {%endblock%}
 
 
