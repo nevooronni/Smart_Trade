@@ -1,4 +1,4 @@
-#!/home/nevo/Desktop/python/smart_trade/virtual/bin/python3.6
+#!/home/khalid/Smart_Trade/virtual/bin/python3.6
 from django.core import management
 
 if __name__ == "__main__":
