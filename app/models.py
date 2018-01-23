@@ -41,8 +41,6 @@ def save_user_profile(sender, instance, **kwargs):
 post_save.connect(create_user_profile, sender=User)
 
 class Product(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'product')
-    categories = models.ForeignKey('Category', on_delete= models.CASCADE, related_name='category')
     name = models.CharField(max_length=140,blank=True)
     seller = models.ManyToManyField('Seller')
     buyer =  models.ManyToManyField('Buyer')
@@ -67,7 +65,6 @@ class Product(models.Model):
 
 class Seller(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'seller')
-    name = models.CharField(max_length=140,blank=True)
     account_number = models.IntegerField()
 
     @classmethod
@@ -84,7 +81,6 @@ class Seller(models.Model):
         return self.name
 
 class Buyer(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name = 'user')
     name = models.CharField(max_length=140, blank= True)
     account_number = models.IntegerField()
 
