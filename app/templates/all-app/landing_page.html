@@ -97,17 +97,21 @@
             <div class="row">
               <div class="col-md-6" style="">
                 <h4 class="text-left" style="color: #FF7700; font-weight: bold; margin-top: 13%; margin-left: 8%;">{{product.name}}</h4>
+                {% for product in wheat_products %}
+                  <h5>{{product.unit_price}}</h5>
+                {% endfor %}
               </div>
               <div class="col-md-6">
                 <div class="row">
-                  <div class="col-md-12" style="height: 200px; padding-top: 50%;">
+                  <div class="col-md-12" style="height: 200px; padding-top: 10%;">
+                     <h1 style="font-size: 45px; color: ;">{{product.unit_price}}</h1>
                     <h1 style="font-size: 45px; color: ;">+84%</h1>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                     <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-bottom: 10%; height: 60px;"><i class=""></i>BUY</button>
-                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px;"><i class=""></i>SELL</button>
+                    <a href="{% url 'sell' %}"><button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px;"><i class=""></i>SELL</button></a>
                   </div>
                 </div>
               </div>

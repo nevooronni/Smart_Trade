@@ -36,11 +36,21 @@ post_save.connect(create_user_profile, sender=User)
 
 class Product(models.Model):
     name = models.CharField(max_length=140)
-    quantity = models.DecimalField( max_digits=19, decimal_places=10)
-    price  =  models.DecimalField( max_digits=19, decimal_places=10,blank=True)
-    unit_price = models.DecimalField( max_digits=19, decimal_places=10)
+    quantity = models.IntegerField()
+    price  =  models.IntegerField()
+    unit_price = models.IntegerField()
     product_image = models.ImageField(upload_to='products',blank=True)
     description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.user.username
+    class Meta:
+        ordering  = ['name']
+
+    @classmethod
+    def get_product_by_name(cls,name):
+        products = Product.objects.filter(name=name).all()
+        return products
 
     @classmethod
     def display_buyersy_products(cls):

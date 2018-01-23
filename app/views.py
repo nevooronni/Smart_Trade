@@ -14,8 +14,15 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
     all_products = Product.objects.all()
+    name = "wheat"
+    wheat_products = Product.objects.filter(name=name).all()
+    # product_prices = []
+    # for p in products:
+    #     product_prices.append(p.unit_price)
+    #     lowest = min(product_prices)
+    # return lowest
 
-    return render(request,'all-app/landing_page.html',{"products":all_products})
+    return render(request,'all-app/landing_page.html',{"products":all_products,"wheat_products":wheat_products})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
@@ -23,7 +30,7 @@ def index(request):
 
 @login_required(login_url = '/accounts/login/')
 def sell(request):
-    user = request.user
+    current_user = request.user
     current_profile = current_user.profile 
 
     if request.method == 'POST':
@@ -38,9 +45,9 @@ def sell(request):
             return redirect(landing_page)
     else:
 
-        form = sellForm()
+        form = SellForm()
 
-    return render(request,'all-app/sell.html')
+    return render(request,'all-app/sell.html',{"form":form,"current_user":current_user,})
 
 @login_required(login_url='/accounts/login')
 def add_to_cart(request, product_id, quantity):
