@@ -1,0 +1,22 @@
+{% extends 'all-app/base.html' %}
+{% load static %}
+{% load bootstrap3 %} 
+
+{% block content %}
+{{bock.super}}
+   <div class="row">
+      <div class="col-md-4 col-lg-4">
+      </div>
+      <div class="col-md-4 col-lg-4" id="poster">
+          <form action="{% url 'post' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" value="Submit" value="post" class="btn" id="posterbutton"/>
+          </form>
+      </div>
+      <div class="col-md-4 col-lg-4">  
+      </div>
+    </div>
+  </div>  
+
+{% endblock %}

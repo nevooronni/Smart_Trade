@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from .forms import SellForm
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import Product,Profile,Cart,ItemManager,Item,Buyer,Sell,Category
@@ -13,11 +14,33 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
     all_products = Product.objects.all()
+
     return render(request,'all-app/landing_page.html',{"products":all_products})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
 	return render(request,'all-app/index.html')
+
+@login_required(login_url = '/accounts/login/')
+def sell(request):
+    user = request.user
+    current_profile = current_user.profile 
+
+    if request.method == 'POST':
+        form = SellForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            sell = form.save(commit=False)
+            sell.user = current_user
+            sell.profile = current_profile
+            sell.save()
+
+            return redirect(landing_page)
+    else:
+
+        form = sellForm()
+
+    return render(request,'all-app/sell.html')
 
 @login_required(login_url='/accounts/login')
 def add_to_cart(request, product_id, quantity):

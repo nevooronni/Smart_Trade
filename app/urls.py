@@ -6,6 +6,7 @@ from . import views
 urlpatterns=[
 	url('^$',views.landing_page,name="landing_page"),
 	url('^index/$',views.index,name = "index"),	
+	url(r'^sell/$',views.sell,name = 'sell'),
 	#url(r'^cart/', views.get_cart, name= "cart"),
 ]
 

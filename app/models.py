@@ -35,12 +35,12 @@ def save_user_profile(sender, instance, **kwargs):
 post_save.connect(create_user_profile, sender=User)
 
 class Product(models.Model):
-    name = models.CharField(max_length=140,blank=True)
+    name = models.CharField(max_length=140)
     quantity = models.DecimalField( max_digits=19, decimal_places=10)
-    price  =  models.DecimalField( max_digits=19, decimal_places=10)
+    price  =  models.DecimalField( max_digits=19, decimal_places=10,blank=True)
     unit_price = models.DecimalField( max_digits=19, decimal_places=10)
-    product_image = models.ImageField(upload_to='products')
-    description = models.TextField()
+    product_image = models.ImageField(upload_to='products',blank=True)
+    description = models.TextField(blank=True)
 
     @classmethod
     def display_buyersy_products(cls):
@@ -58,6 +58,12 @@ class Product(models.Model):
 class Sell(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'sell')
     product =  models.ForeignKey(Product,on_delete=models.CASCADE, related_name= 'sell')
+
+
+    @classmethod
+    def get_single_product(cls,pk):
+        sell = cls.objects.get(pk=pk)
+        return sell
 
     @classmethod
     def display_buyers(cls):
