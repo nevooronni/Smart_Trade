@@ -26,7 +26,7 @@ SECRET_KEY = '7g_udl49d%gd=%m)#j95hhc7t8^j^f@j1em6^ms_c!l9+==8g('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['smarttrade.herokuapp.com']
 
 
 # Application definition
