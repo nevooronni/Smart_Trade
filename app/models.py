@@ -34,6 +34,14 @@ def save_user_profile(sender, instance, **kwargs):
 
 post_save.connect(create_user_profile, sender=User)
 
+class Wheat(models.Model):
+    name = models.CharField(max_length=140)
+    quantity = models.IntegerField()
+    price  =  models.IntegerField()
+    unit_price = models.IntegerField()
+    product_image = models.ImageField(upload_to='products',blank=True)
+    description = models.TextField(blank=True)
+
 class Product(models.Model):
     name = models.CharField(max_length=140)
     quantity = models.IntegerField()
