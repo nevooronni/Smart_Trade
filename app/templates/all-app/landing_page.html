@@ -92,21 +92,17 @@
       </div>
       <div class="col-sm-9 col-9" style="background-color: #323a48; height: 715.5px; border-bottom-width: 2px; border-bottom-color: grey;">
         <div class="row">
-          {% for product in products %}
+          {% for wheat in wheat_products %}
           <div class="col-lg-4 col-md-4" style="border-width: 2px; border-color: grey; border-style: solid; height: 357px; background-image: url('{{product.product_image.}}'); background-size: cover; background-repeat: none;">
             <div class="row">
-              <div class="col-md-6" style="">
-                <h4 class="text-left" style="color: #FF7700; font-weight: bold; margin-top: 13%; margin-left: 8%;">{{product.name}}</h4>
-                {% for product in wheat_products %}
-                  <h5>{{product.unit_price}}</h5>
-                {% endfor %}
-              </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="row">
-                  <div class="col-md-12" style="height: 200px; padding-top: 10%;">
-                     <h1 style="font-size: 45px; color: ;">{{product.unit_price}}</h1>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-10" style="height: 200px; padding-top: 10%;">
+                    <h5 style="font-size: 45px; color: #fff;">Ksh {{wheat.unit_price}}</h5>
                     <h1 style="font-size: 45px; color: ;">+84%</h1>
                   </div>
+                  <div class="col-md-1"></div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">

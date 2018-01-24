@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import SellForm
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-from .models import Product,Profile,Cart,ItemManager,Item,Buyer,Sell,Category
+from .models import Wheat,Profile,Cart,ItemManager,Item,Buyer,Sell,Category
 from .cart import *
 from django.views import generic
 from django.shortcuts import render, redirect
@@ -13,16 +13,15 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
-    all_products = Product.objects.all()
-    name = "wheat"
-    wheat_products = Product.objects.filter(name=name).all()
+    wheat_products = Wheat.get_all_wheat_sales()
+    # lowest = min(wheat_prices)
     # product_prices = []
     # for p in products:
     #     product_prices.append(p.unit_price)
     #     lowest = min(product_prices)
     # return lowest
 
-    return render(request,'all-app/landing_page.html',{"products":all_products,"wheat_products":wheat_products})
+    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):

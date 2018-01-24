@@ -12,18 +12,12 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=140, blank=True)
     last_name = models.CharField(max_length=140, blank=True)
-    photo = models.ImageField(upload_to='profile_pics', blank=True)
     phone_number = PhoneNumberField(max_length = 10, blank = True)
     location = models.CharField(max_length=140, blank=True)
     email = models.EmailField(max_length=140, blank=True)
 
     def __str__(self):
         return self.user.username
-
-    @property
-    def photo_url(self):
-        if self.photo and hasattr(self.photo, 'url'):#return whether an object has an attribute with the same name
-            return self.photo.url
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -52,9 +46,18 @@ class Wheat(models.Model):
         ordering = ['-sell_time']
 
     @classmethod
-    def retrive_profile_wheat_sales(cls,profile_id):
-        prof_sales = Wheat.objects.filter(profile=profile_id).all()
-        return prof_sales
+    def get_all_wheat_sales(cls):
+        all_wheat = Wheat.objects.all()
+        return all_wheat
+
+    @classmethod
+    def get_single_wheat(cls,pk):
+        single_wheat  = Wheat.objects.filter(pk=pk)
+
+    @classmethod
+    def get_user_wheat(cls,user_id):
+        user_wheat = Wheat.objects.filter(user=user.id).all()
+        return user_wheat
 
 class Product(models.Model):
     name = models.CharField(max_length=140)
