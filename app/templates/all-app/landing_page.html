@@ -4,4 +4,177 @@
   <h2 class="text-center" id="color">FAST EASY & RELIABLE</h2>
   <h4 class="text-center grey">*Amount to be credited to account in case of successful trade*</h4>
 </div>
+{% endblock %} {% extends 'all-app/base.html' %} {% load static %} {% load bootstrap3 %} {% block content %} {{bock.super}}
+<style>
+  .viewall {
+    border-radius: 0px;
+    background-color: #FF7700;
+    color: #fff;
+    width: 90px;
+    margin-left: 20%;
+    margin-top: 5%;
+  }
+
+  .viewall:hover {
+    color: #FF7700;
+    background-color: #fff;
+  }
+</style>
+<div class="row" style="height: ;">
+  <div class="col-sm-1 col-md-1 active" style="background-color: #323a48; height: 715.5px; min-height: 100%; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
+    <div class="row">
+      <div class="col-xs-4 col-md-2"></div>
+      <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+        <span style="margin-left: 10%;"><i class="glyphicon glyphicon-user" style="font-size: 40px; color: grey ;"></i></span>
+        <h5 style="color: grey;">PROFILE</h5>
+      </div>
+      <div class="col-xs-4 col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-md-2">
+
+      </div>
+      <div class="col-xs-4 col-md-8 style=" padding-top: 18%;>
+        <span style="margin-left: 10%;" "><i class="glyphicon glyphicon-signal " style="font-size: 40px; color: grey; ""></i></span>
+        <h5 style="color: grey;">TRADE</h5>
+      </div>
+      <div class="col-xs-4 col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-md-2"></div>
+      <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+        <span style="margin-left: 10%;" "><i class="glyphicon glyphicon-sort " style="font-size: 40px; color: grey; ""></i></span>
+        <h5 style="color: grey;">FUTURES</h5>
+      </div>
+      <div class="col-xs-4 col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-md-2"></div>
+      <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+        <span style="margin-left: 10%;" "><i class="glyphicon glyphicon-equalizer " style="font-size: 40px; color: grey; ""></i></span>
+        <h5 style="color: grey;">MARKET ANALYSIS</h5>
+      </div>
+      <div class="col-xs-4 col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-md-2"></div>
+      <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+        <span style="margin-left: 10%;" "><i class="glyphicon glyphicon-info-sign " style="font-size: 40px; color: grey; ""></i></span>
+        <h5 style="color: grey; margin-left: 7%;">ABOUT</h5>
+      </div>
+      <div class="col-xs-14 col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-md-2"></div>
+      <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+        <span style="margin-left: 10%;" "><i class="glyphicon glyphicon-question-sign " style="font-size: 40px; color: grey; ""></i></span>
+        <h5 class="text-center" style="color: grey;">HELP</h5>
+      </div>
+      <div class="col-xs-4 col-md-2"></div>
+    </div>
+  </div>
+  <div class="col-sm-2 col-md-2" style="background-color: #323a48; height: 715.5px; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
+    <div class="row">
+      <div class="col-md-12" style="padding-top: 5%; padding-left: 10%; padding-right: 10%;  padding-bottom: 8%; border-bottom-color: grey; border-bottom-width: 2px; border-bottom-style: solid;">
+        <h4 class="text-center" style="color: #fff;">AGRICULTURE</h4>
+        <p class="text-left" style="color: grey;">Smart Trade is the center of trading in agricultural commodities. We offer futures and options on the leading softs markets including coffee, cocoa, cotton, sugar and frozen concentrated orange juice, as well as a wide range of grains futures
+          and options, including the leading canola futures contract.
+        </p>
+        <button class="btn viewall">View All</button>
+        <p class="" style="color: #03AB42; margin-top: 5%; margin-left: 16%;font-weight: bold;">13 Commodities</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="padding-top: 5%; padding-left: 10%; padding-right: 10%;  padding-bottom: 0px;">
+        <h4 class="text-center" style="color: #fff;">LIVESTOCK/MEAT</h4>
+        <p class="text-left" style="color: grey;">Smart Trade provides central trading in livestock. We offer futures and options on the leading markets including live cattle, feeder cattle, pork bellies, goat, as well as a wide range of meat futures and options, including the leading lean hogs
+          contract.
+        </p>
+        <button class="btn viewall">View All</button>
+        <p class="" style="color: #03AB42; margin-top: 5%; margin-left: 17%; font-weight: bold;">Comming Soon</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9 col-9" style="background-color: #323a48; height: 715.5px; border-bottom-width: 2px; border-bottom-color: grey;">
+    <div class="row">
+      <div class="col-md-4" style="border-width: 2px; border-color: grey; border-style: solid; height: 349px; background-image: url('{% static 'img/download.jpeg' %}'); background-size: cover; background-repeat: none;">
+        <div class="row">
+          <div class="col-md-6" style="">
+            <h4 class="text-left" style="color: #FF7700; font-weight: bold; margin-top: 13%; margin-left: 8%;">WHEAT</h4>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-12" style="height: 200px; padding-top: 50%;">
+                <h1 style="font-size: 45px; color: ;">+84%</h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-bottom: 10%; height: 60px;"><i class=""></i>BUY</button>
+                <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px;"><i class=""></i>SELL</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" style="border-width: 2px; border-color: grey; border-style: solid; height: 339px; background-image: url('{% static 'img/download.jpeg' %}'); background-size: cover; background-repeat: none;">
+        <div class="row">
+          <div class="col-md-6" style="">
+            <h4 class="text-left" style="color: #FF7700; font-weight: bold; margin-top: 13%; margin-left: 8%;">WHEAT</h4>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-12" style="height: 200px; padding-top: 50%;">
+                <h1 style="font-size: 45px; color: ;">+84%</h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-bottom: 10%; height: 60px;"><i class=""></i>BUY</button>
+                <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px;"><i class=""></i>SELL</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" style="border-width: 2px; border-color: grey; border-style: solid; height: 353px; background-image: url('{% static 'img/download.jpeg' %}'); background-size: cover; background-repeat: none;">
+      <div class="row">
+        <div class="col-md-6" style="">
+          <h4 class="text-left" style="color: #FF7700; font-weight: bold; margin-top: 13%; margin-left: 8%;">WHEAT</h4>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12" style="height: 200px; padding-top: 50%;">
+              <h1 style="font-size: 45px; color: ;">+84%</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-bottom: 10%; height: 60px;"><i class=""></i>BUY</button>
+              <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px;"><i class=""></i>SELL</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- <div>
+    <div class="row" style="height: auto; border-bottom-width: 2px; border-bottom-color: #fff;">
+      <div class="col-xs-12 col-md-1" style="background-color: #323a48; height: 100%; border-top-width: 2px; border-right-width: 2px; border-top-color: #fff; border-right-color: #fff;">
+
+      </div>
+      <div class="col-xs-12 col-md-10" style="background-color: #323a48; height: 100%; border-top-width: 2px; border-right-width: 2px; border-top-color: #fff; border-right-color: #fff;">
+
+      </div>
+      </div>
+      <div class="col-xs-12 col-md-1" style="background-color: #323a48; height: 100%; border-top-width: 2px; border-right-width: 2px; border-top-color: #fff; border-right-color: #fff;">
+
+      </div>
+    </div>
+  </div> -->
 {% endblock %}
