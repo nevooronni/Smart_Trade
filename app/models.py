@@ -4,43 +4,57 @@ from django.db.models.signals import post_save
 from django.db.models import Q, signals
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
-from datetime import datetime
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
-
-
+import datetime as dt
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=140, blank=True)
     last_name = models.CharField(max_length=140, blank=True)
-    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+    photo = models.ImageField(upload_to='profile_pics', blank=True)
     phone_number = PhoneNumberField(max_length = 10, blank = True)
     location = models.CharField(max_length=140, blank=True)
     email = models.EmailField(max_length=140, blank=True)
 
-User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
+    def __str__(self):
+        return self.user.username
 
+    @property
+    def photo_url(self):
+        if self.photo and hasattr(self.photo, 'url'):#return whether an object has an attribute with the same name
+            return self.photo.url
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
-
+        Profile.objects.create(user=instance)#creates a profile when creating a user
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+    instance.profile.save()#save a profile when saving a user
 
-post_save.connect(create_user_profile, sender=User)
+@property 
+def photo_url(self):
+    if self.photo and hasattr(self.photo, 'url'):
+        return self.photo.url   
 
 class Wheat(models.Model):
-    name = models.CharField(max_length=140)
     quantity = models.IntegerField()
-    price  =  models.IntegerField()
     unit_price = models.IntegerField()
-    product_image = models.ImageField(upload_to='products',blank=True)
-    description = models.TextField(blank=True)
+    sell_time = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+    class Meta:
+        ordering = ['-sell_time']
+
+    @classmethod
+    def retrive_profile_wheat_sales(cls,profile_id):
+        prof_sales = Wheat.objects.filter(profile=profile_id).all()
+        return prof_sales
 
 class Product(models.Model):
     name = models.CharField(max_length=140)
