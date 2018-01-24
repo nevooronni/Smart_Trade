@@ -92,28 +92,29 @@
       </div>
       <div class="col-sm-9 col-9" style="background-color: #323a48; height: 715.5px; border-bottom-width: 2px; border-bottom-color: grey;">
         <div class="row">
-          {% for wheat in wheat_products %}
           <div class="col-lg-4 col-md-4" style="border-width: 2px; border-color: grey; border-style: solid; height: 357px; background-image: url('{{product.product_image.}}'); background-size: cover; background-repeat: none;">
             <div class="row">
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-1"></div>
-                  <div class="col-md-10" style="height: 200px; padding-top: 10%;">
-                    <h5 style="font-size: 45px; color: #fff;">Ksh {{wheat.unit_price}}</h5>
-                    <h1 style="font-size: 45px; color: ;">+84%</h1>
+                  <div class="col-md-10" style="height: 200px; padding-top: 10%; padding-bottom: 0px;">
+                    <h1 class="text-center" style="color: #FF7700;">WHEAT</h1>
+                    <h5 class="text-center" style="font-size: 45px; color: #fff;">Ksh {{price}}</h5>
+                    <h1 class="text-center" style="font-size: 45px; color: ;">+84%</h1>
                   </div>
                   <div class="col-md-1"></div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-bottom: 10%; height: 60px;"><i class=""></i>BUY</button>
-                    <a href="{% url 'sell' %}"><button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px;"><i class=""></i>SELL</button></a>
+                <div class="row" style="margin-top: 12%;">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-10">
+                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-right: 3%; height: 60px; display: inline;"><i class=""></i>BUY</button>
+                    <a href="{% url 'sell' %}"><button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px; display: inline;"><i class=""></i>SELL</button></a>
                   </div>
+                  <div class="col-md-1"></div>
                 </div>
               </div>
             </div>
           </div>
-          {% endfor %}
         </div>
         </div>
         </div>

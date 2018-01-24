@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.db.models import Q, signals
+from django.db.models import Avg, Max, Min, Sum
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import ugettext_lazy as _
@@ -49,6 +50,11 @@ class Wheat(models.Model):
     def get_all_wheat_sales(cls):
         all_wheat = Wheat.objects.all()
         return all_wheat
+
+    @classmethod
+    def get_lowest_price(cls):
+        lowest_price = Wheat.objects.all().aggregate(Min('unit_price'))
+        return lowest_price
 
     @classmethod
     def get_single_wheat(cls,pk):

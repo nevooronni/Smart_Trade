@@ -14,6 +14,13 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
     wheat_products = Wheat.get_all_wheat_sales()
+    lowest_price = Wheat.get_lowest_price()
+    print(lowest_price.get("unit_price__min"))
+    price = lowest_price.get("unit_price__min") 
+    # wheat_prices = []
+    # for p in wheat_products:
+    #     price_list = wheat_prices.append(p.unit_price)
+    # return price_list
     # lowest = min(wheat_prices)
     # product_prices = []
     # for p in products:
@@ -21,7 +28,7 @@ def landing_page(request):
     #     lowest = min(product_prices)
     # return lowest
 
-    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products})
+    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products,"price":price})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
