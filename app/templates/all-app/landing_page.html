@@ -18,6 +18,10 @@
           color: #FF7700;
           background-color: #fff;
         }
+
+      #sellorder:hover {
+        font-weight: bold;
+      }
     </style>
     <div class="row" style="height: ;">
       <div class="col-sm-1 col-md-1 active" style="background-color: #323a48; height: 715.5px; min-height: 100%; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
@@ -108,7 +112,46 @@
                   <div class="col-md-1"></div>
                   <div class="col-md-10">
                     <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-right: 3%; height: 60px; display: inline;"><i class=""></i>BUY</button>
-                    <a href="{% url 'sell' %}"><button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px; display: inline;"><i class=""></i>SELL</button></a>
+                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px; display: inline;" data-toggle="modal" data-target="#myModal"><i class=""></i>SELL</button>
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog" style="width: 370px;">
+
+                        <!-- Modal content-->
+                        <div class="modal-content" style="border-radius: 0px;">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="text-center" style="color: #F54031; font-weight: bold;">SELL ORDER</h2>
+                            <br>
+                              <i class="glyphicon glyphicon-signal" style="color: #fff; border-radius: 50%;text-decoration: none; margin-right: 0.2em; font-size: 23px; background-color: rgb(255, 119, 0); height: 50px; width: 50px; padding-top: 0.4em; padding-left:0.4em; display: inline-block; margin-left: 1em;"></i>
+                              <h4 style="display: inline-block;"><strong>{{current_user.username}}</strong><br><span style="color: #4a4a4a;">{{current_user.email}}</span></h4>
+                              <br>
+                              <br>
+                              <br>
+                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">Balance</h4>
+                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">{{current_user.profile.account}}</h4>
+                              <br>
+                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
+                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
+                              <br>
+                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Buy</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Wheat</h4>
+                              <br>
+                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Prize</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">{{price}}</h4>
+                          </div>
+                          <div class="modal-body">
+                            <br>
+                            <form action="{% url 'sell' %}" method="post" enctype="multipart/form-data">
+                              {% csrf_token %}
+                              {% bootstrap_form form %}
+                              <input type="submit" value="SUBMIT" value="post" class="btn" style="background-color: #F54031; color: #fff; border-radius: 0px; height: 60px; width: 150px; margin-left: 7em;" id="sellorder"/>
+                            </form>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-1"></div>
                 </div>

@@ -16,6 +16,7 @@ class Profile(models.Model):
     phone_number = PhoneNumberField(max_length = 10, blank = True)
     location = models.CharField(max_length=140, blank=True)
     email = models.EmailField(max_length=140, blank=True)
+    account = models.IntegerField(default=10000)
 
     def __str__(self):
         return self.user.username
@@ -50,6 +51,11 @@ class Wheat(models.Model):
     def get_all_wheat_sales(cls):
         all_wheat = Wheat.objects.all()
         return all_wheat
+    
+    @classmethod
+    def get_total_amount(cls):
+        total_amount = Wheat.objects.values('unit_price') * Wheat.objects.values('quantity')
+        return total_amount
 
     @classmethod
     def get_lowest_price(cls):

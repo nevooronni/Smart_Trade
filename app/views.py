@@ -28,7 +28,24 @@ def landing_page(request):
     #     lowest = min(product_prices)
     # return lowest
 
-    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products,"price":price})
+    current_user = request.user
+    current_profile = current_user.profile 
+
+    if request.method == 'POST':
+        form = SellForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            sell = form.save(commit=False)
+            sell.user = current_user
+            sell.profile = current_profile
+            sell.save()
+
+            return redirect(landing_page)
+    else:
+
+        form = SellForm()
+
+    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products,"price":price,"form":form,"current_user":current_user,})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
