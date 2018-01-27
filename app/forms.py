@@ -6,4 +6,4 @@ from .models import Profile,Sell,Product
 class SellForm(forms.ModelForm):
 	class Meta:
 		model = Product
-		fields = ('unit_price','quantity',)
+		fields = ('name','unit_price','quantity',)
