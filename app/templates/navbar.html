@@ -19,31 +19,36 @@
     <div class="col-xs-12" id="navbar" style="background-color: #323a48; border-bottom: 2px solid grey;border-radius: 0px; margin-bottom: 0px; height: 5.7em;">
       <div class="row">
         <div class="col-xs-1 col-md-1"></div>
-        <a href="/accounts/login"><div class="col-xs-12 col-md-9" style="padding-top: 1.2em">
+        <a href="/accounts/login"><div class="col-xs-12 col-md-7" style="padding-top: 1.2em">
           <i class="glyphicon glyphicon-signal" style="color: #fff; border-radius: 50%;text-decoration: none; margin-right: 0.3em; font-size: 23px; background-color: rgb(255, 119, 0); height: 50px; width: 50px; padding-top: 0.4em; padding-left: 0.4em;"></i>
           <a class="" href="{% url 'landing_page' %}" style=" color: #fff; border-radius: 50%;text-decoration: none; margin-right: ; font-size: 30px; font-weight: bold;">SMART TRADE</a>
+          
         </div></a>
-        <div class="col-xs-12 col-md-2">
+        <div class="col-md-2">
           {% if user.is_authenticated %}
-            <!-- <h3 style="color: #FF7700;">Ksh{{current_user.profile.account}}</h3> -->
-            <ul>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false" style="border-radius: 0px; color: #FF7700; font-weight: bold; margin-top: 1.7em;">ACCOUNT
-                          <span class="caret"></span>
-                      </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li>
-                    <a href="/accounts/password/change" style="color: #FF7700; font-weight: bold;">CHANGE PASSWORD</a>
-                  </li>
-                  <li>
-                    <a href="/logout" style="color: #FF7700; font-weight: bold">LOGOUT</a>
+            <h4 style="color: #FF7700; font-weight: bold; margin-top: 0px;">ACCOUNT BALANCE Ksh{{current_user.profile.account}}</h4>
+          {% endif %}
+        </div>
+        <div class="col-xs-12 col-md-2">
+            {% if user.is_authenticated %}
+                <ul>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false" style="border-radius: 0px; color: #FF7700; font-weight: bold; margin-top: 1.7em;">ACCOUNT
+                              <span class="caret"></span>
+                          </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li>
+                        <a href="/accounts/password/change" style="color: #FF7700; font-weight: bold;">CHANGE PASSWORD</a>
+                      </li>
+                      <li>
+                        <a href="/logout" style="color: #FF7700; font-weight: bold">LOGOUT</a>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
-              </li>
-            </ul>
-          {% else %}
-          <a href="/accounts/login"><button class="btn" id="login">LOGIN</button></i>
-          {% endif %}
+              {% else %}
+              <a href="/accounts/login"><button class="btn" id="login">LOGIN</button></i></a>
+              {% endif %}
         </div> 
       </div>
     </div>   

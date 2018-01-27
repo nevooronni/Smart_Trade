@@ -66,10 +66,42 @@ class Wheat(models.Model):
     def get_single_wheat(cls,pk):
         single_wheat  = Wheat.objects.filter(pk=pk)
 
+
+class Coffee(models.Model):
+    quantity = models.IntegerField()
+    unit_price = models.IntegerField()
+    sell_time = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+    class Meta:
+        ordering = ['-sell_time']
+
+    @classmethod
+    def get_all_coffee_sales(cls):
+        all_coffee = Coffee.objects.all()
+        return all_coffee
+    
+    @classmethod
+    def get_total_amount(cls):
+        total_amount = Coffee.objects.values('unit_price') * Coffee.objects.values('quantity')
+        return total_amount
+
+    @classmethod
+    def get_lowest_price(cls):
+        lowest_price = Coffee.objects.all().aggregate(Min('unit_price'))
+        return lowest_price
+
+    @classmethod
+    def get_single_wheat(cls,pk):
+        single_wheat  = Coffee.objects.filter(pk=pk)
+
     @classmethod
     def get_user_wheat(cls,user_id):
-        user_wheat = Wheat.objects.filter(user=user.id).all()
-        return user_wheat
+        user_coffee = Coffee.objects.filter(user=user.id).all()
+        return user_coffee
 
 class Product(models.Model):
     name = models.CharField(max_length=140)
