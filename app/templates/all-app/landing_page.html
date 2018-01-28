@@ -165,7 +165,7 @@
                   <div class="col-md-1"></div>
                   <div class="col-md-10" style="height: 200px; padding-top: 10%; padding-bottom: 0px;">
                     <h1 class="text-center" style="color: #FF7700;">SUGAR</h1>
-                    <h5 class="text-center" style="font-size: 45px; color: #fff;">Ksh {{price}}</h5>
+                    <h5 class="text-center" style="font-size: 45px; color: #fff;">Ksh {{sugar_price}}</h5>
                     <h1 class="text-center" style="font-size: 45px; color: ;">+84%</h1>
                   </div>
                   <div class="col-md-1"></div>
@@ -197,16 +197,16 @@
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Buy</h4>
-                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Wheat</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Sugar</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
-                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">{{price}}</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">{{sugar_price}}</h4>
                           </div>
                           <div class="modal-body">
                             <br>
-                            <form action="{% url 'sell' %}" method="post" enctype="multipart/form-data">
+                            <form action="{% url 'sell_sugar' %}" method="post" enctype="multipart/form-data">
                               {% csrf_token %}
-                              {% bootstrap_form form %}
+                              {% bootstrap_form sugar_form %}
                               <input type="submit" value="SUBMIT" value="post" class="btn" style="background-color: #F54031; color: #fff; border-radius: 0px; height: 60px; width: 150px; margin-left: 7em;" id="sellorder"/>
                             </form>
                           </div>
@@ -267,7 +267,7 @@
                           </div>
                           <div class="modal-body">
                             <br>
-                            <form action="{% url 'landing_page' %}" method="post" enctype="multipart/form-data">
+                            <form action="{% url 'sell_coffee' %}" method="post" enctype="multipart/form-data">
                               {% csrf_token %}
                               {% bootstrap_form coffee_form %}
                               <input type="submit" value="SUBMIT" value="post" class="btn" style="background-color: #F54031; color: #fff; border-radius: 0px; height: 60px; width: 150px; margin-left: 7em;" id="sellorder"/>
@@ -291,7 +291,7 @@
                   <div class="col-md-1"></div>
                   <div class="col-md-10" style="height: 200px; padding-top: 10%; padding-bottom: 0px;">
                     <h1 class="text-center" style="color: #FF7700;">COTTON</h1>
-                    <h5 class="text-center" style="font-size: 45px; color: #fff;">Ksh {{price}}</h5>
+                    <h5 class="text-center" style="font-size: 45px; color: #fff;">Ksh {{cotton_price}}</h5>
                     <h1 class="text-center" style="font-size: 45px; color: ;">+84%</h1>
                   </div>
                   <div class="col-md-1"></div>
@@ -323,16 +323,16 @@
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Buy</h4>
-                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Wheat</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Cotton</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
-                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">{{price}}</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">{{cotton_price}}</h4>
                           </div>
                           <div class="modal-body">
                             <br>
-                            <form action="{% url 'sell' %}" method="post" enctype="multipart/form-data">
+                            <form action="{% url 'sell_cotton' %}" method="post" enctype="multipart/form-data">
                               {% csrf_token %}
-                              {% bootstrap_form form %}
+                              {% bootstrap_form cotton_form %}
                               <input type="submit" value="SUBMIT" value="post" class="btn" style="background-color: #F54031; color: #fff; border-radius: 0px; height: 60px; width: 150px; margin-left: 7em;" id="sellorder"/>
                             </form>
                           </div>

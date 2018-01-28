@@ -95,13 +95,86 @@ class Coffee(models.Model):
         return lowest_price
 
     @classmethod
-    def get_single_wheat(cls,pk):
-        single_wheat  = Coffee.objects.filter(pk=pk)
+    def get_single_coffee(cls,pk):
+        single_coffee  = Coffee.objects.filter(pk=pk)
 
     @classmethod
     def get_user_wheat(cls,user_id):
         user_coffee = Coffee.objects.filter(user=user.id).all()
         return user_coffee
+
+class Sugar(models.Model):
+    quantity = models.IntegerField()
+    unit_price = models.IntegerField()
+    sell_time = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+    class Meta:
+        ordering = ['-sell_time']
+
+    @classmethod
+    def get_all_sugar_sales(cls):
+        all_sugar = Sugar.objects.all()
+        return all_sugar
+    
+    @classmethod
+    def get_total_amount(cls):
+        total_amount = Sugar.objects.values('unit_price') * Sugar.objects.values('quantity')
+        return total_amount
+
+    @classmethod
+    def get_lowest_price(cls):
+        lowest_price = Sugar.objects.all().aggregate(Min('unit_price'))
+        return lowest_price
+
+    @classmethod
+    def get_single_sugar(cls,pk):
+        single_sugar  = Sugar.objects.filter(pk=pk)
+
+    @classmethod
+    def get_user_sugar(cls,user_id):
+        user_sugar = Sugar.objects.filter(user=user.id).all()
+        return user_sugar
+
+class Cotton(models.Model):
+    quantity = models.IntegerField()
+    unit_price = models.IntegerField()
+    sell_time = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+    class Meta:
+        ordering = ['-sell_time']
+
+    @classmethod
+    def get_all_cotton_sales(cls):
+        all_cotton = Cotton.objects.all()
+        return all_cotton
+    
+    @classmethod
+    def get_total_amount(cls):
+        total_amount = Cotton.objects.values('unit_price') * Cottton.objects.values('quantity')
+        return total_amount
+
+    @classmethod
+    def get_lowest_price(cls):
+        lowest_price = Cotton.objects.all().aggregate(Min('unit_price'))
+        return lowest_price
+
+    @classmethod
+    def get_single_cotton(cls,pk):
+        single_cotton  = Cotton.objects.filter(pk=pk)
+
+    @classmethod
+    def get_user_cotton(cls,user_id):
+        user_cotton = Cotton.objects.filter(user=user.id).all()
+        return user_cotton
+
 
 class Product(models.Model):
     name = models.CharField(max_length=140)

@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
-from .forms import SellForm,CoffeeForm
+from .forms import SellForm,CoffeeForm,SugarForm,CottonForm
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-from .models import Wheat,Profile,Cart,ItemManager,Item,Buyer,Sell,Category,Coffee
+from .models import Wheat,Profile,Cart,ItemManager,Item,Buyer,Sell,Category,Coffee,Sugar,Cotton
 from .cart import *
 from django.views import generic
 from django.shortcuts import render, redirect
@@ -71,7 +71,52 @@ def landing_page(request):
 
         coffee_form = CoffeeForm()
 
-    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products,"price":price,"form":form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"current_user":current_user,})
+    sugar_products = Sugar.get_all_sugar_sales()
+    lowest_price = Sugar.get_lowest_price()
+    print(lowest_price.get("unit_price__min"))
+    sugar_price = lowest_price.get("unit_price__min")
+
+    current_user = request.user
+    current_profile = current_user.profile
+
+    if request.method == 'POST':
+        sugar_form = SugarForm(request.POST,request.FILES)
+
+        if sugar_form.is_valid():
+            sell = sugar_form.save(commit=False)
+            sell.user = current_user
+            sell.profile = current_profile
+            sell.save()
+
+            return redirect(landing_page)
+    else:
+
+        sugar_form = SugarForm()
+
+    cotton_products = Cotton.get_all_cotton_sales()
+    lowest_price = Cotton.get_lowest_price()
+    print(lowest_price.get("unit_price__min"))
+    cotton_price = lowest_price.get("unit_price__min")
+
+    current_user = request.user
+    current_profile = current_user.profile
+
+    if request.method == 'POST':
+        cotton_form = CottonForm(request.POST,request.FILES)
+
+        if cotton_form.is_valid():
+            sell = cotton_form.save(commit=False)
+            sell.user = current_user
+            sell.profile = current_profile
+            sell.save()
+
+            return redirect(landing_page)
+    else:
+
+        cotton_form = CottonForm()
+
+
+    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products,"price":price,"form":form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
@@ -96,6 +141,32 @@ def sell(request):
 
         form = SellForm()
 
+    return render(request,'all-app/sell.html',{"form":form,"current_user":current_user,})
+
+@login_required(login_url = '/accounts/login/')
+def sell_sugar(request):
+    current_user = request.user
+    current_profile = current_user.profile 
+
+    if request.method == 'POST':
+        sugar_form = SugarForm(request.POST,request.FILES)
+
+        if sugar_form.is_valid():
+            sell = sugar_form.save(commit=False)
+            sell.user = current_user
+            sell.profile = current_profile
+            sell.save()
+
+            return redirect(landing_page)
+    else:
+
+        sugar_form = SugarForm()
+
+@login_required(login_url = '/accounts/login/')
+def sell_coffee(request):
+    current_user = request.user
+    current_profile = current_user.profile 
+
     if request.method == 'POST':
         coffee_form = CoffeeForm(request.POST,request.FILES)
 
@@ -110,7 +181,25 @@ def sell(request):
 
         coffee_form = CoffeeForm()
 
-    return render(request,'all-app/sell.html',{"form":form,"coffee_form":coffee_form,"current_user":current_user,})
+@login_required(login_url = '/accounts/login/')
+def sell_cotton(request):
+    current_user = request.user
+    current_profile = current_user.profile 
+
+    if request.method == 'POST':
+        cotton_form = CottonForm(request.POST,request.FILES)
+
+        if cotton_form.is_valid():
+            sell = cotton_form.save(commit=False)
+            sell.user = current_user
+            sell.profile = current_profile
+            sell.save()
+
+            return redirect(landing_page)
+    else:
+
+        cotton_form = CottonForm()
+
 
 @login_required(login_url='/accounts/login')
 def add_to_cart(request, product_id, quantity):
