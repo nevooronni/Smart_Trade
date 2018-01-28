@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Product,Wheat,Coffee
 
-# Register your models here.
+admin.site.register(Product)
+admin.site.register(Wheat)
+admin.site.register(Coffee)
