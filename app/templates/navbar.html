@@ -25,9 +25,15 @@
           
         </div></a>
         <div class="col-md-2">
-          {% if user.is_authenticated %}
-            <h4 style="color: #FF7700; font-weight: bold; margin-top: 0px;">ACCOUNT BALANCE Ksh{{current_user.profile.account}}</h4>
-          {% endif %}
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+              {% if user.is_authenticated %}
+                <h5 style="color: #FF7700; font-weight: bold; margin-top: 1.5em; margin-bottom: 0px;">ACCOUNT BALANCE</h5>
+                <h2 style="color: #FF7700; font-weight: bold; margin-top: 0px;">Ksh{{current_user.profile.account}}</h2>
+              {% endif %}
+            </div>
+          </div>
         </div>
         <div class="col-xs-12 col-md-2">
             {% if user.is_authenticated %}
