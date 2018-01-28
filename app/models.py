@@ -9,6 +9,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 import datetime as dt
 
+
+class Account(models.Model):
+    pass
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=140, blank=True)
@@ -206,6 +210,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Sell(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'sell')

@@ -7,6 +7,7 @@ urlpatterns=[
 	url('^$',views.landing_page,name="landing_page"),
 	url('^index/$',views.index,name = "index"),	
 	url(r'^sell/$',views.sell,name = 'sell'),
+	url(r'^buy/$',views.buy,name = 'buy'),
 	url(r'^sell_sugar/$',views.sell_sugar,name = 'sell_sugar'),
 	url(r'^sell_coffee/$',views.sell_coffee,name = 'sell_coffee'),
 	url(r'^sell_cotton/$',views.sell_cotton,name = 'sell_cotton'),

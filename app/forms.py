@@ -22,3 +22,8 @@ class CottonForm(forms.ModelForm):
 	class Meta:
 		model = Cotton
 		fields = ('unit_price','quantity',)
+
+class BuyForm(forms.ModelForm):
+	class Meta:
+		model = Wheat
+		fields = ('quantity',)

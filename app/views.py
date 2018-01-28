@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import SellForm,CoffeeForm,SugarForm,CottonForm
+from .forms import SellForm,CoffeeForm,SugarForm,CottonForm,BuyForm
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import Wheat,Profile,Cart,ItemManager,Item,Buyer,Sell,Category,Coffee,Sugar,Cotton
@@ -13,13 +13,24 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
+    #buy forms 
+    buy_form = BuyForm()
+
+
     #wheat
     wheat_products = Wheat.get_all_wheat_sales()
     lowest_price = Wheat.get_lowest_price()
     print(lowest_price.get("unit_price__min"))
     price = lowest_price.get("unit_price__min")
+    retail_price = (price * 5/100) + price
 
-
+    def change(price):
+        list_prices = []
+        list_prices.append(price)
+        print(list_prices)
+        change = list_prices[-1] - list_prices[-2]
+        
+        return change
         # wheat_prices = []
         # for p in wheat_products:
         #     price_list = wheat_prices.append(p.unit_price)
@@ -46,7 +57,7 @@ def landing_page(request):
             return redirect(landing_page)
     else:
 
-        form = SellForm()     
+        form = SellForm()
 
 
     coffee_products = Coffee.get_all_coffee_sales()
@@ -116,7 +127,7 @@ def landing_page(request):
         cotton_form = CottonForm()
 
 
-    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products,"price":price,"form":form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
+    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
@@ -142,6 +153,27 @@ def sell(request):
         form = SellForm()
 
     return render(request,'all-app/sell.html',{"form":form,"current_user":current_user,})
+
+@login_required(login_url = '/accounts/login/')
+def buy(request):
+    current_user = request.user
+    current_profile = current_user.profile
+
+    if request.method == 'POST':
+        buy_form = BuyForm(request.POST,request.FILES)
+
+        if buy_form.is_valid():
+            buy = buy_form.save(commit=False)
+            buy.user = current_user
+            buy.profile = current_profile
+            buy.save()
+
+            return redirect(landing_page)
+
+        else:
+
+            buy_form = BuyForm()
+
 
 @login_required(login_url = '/accounts/login/')
 def sell_sugar(request):
