@@ -57,13 +57,13 @@ class Product(models.Model):
 
     @classmethod
     def get_single_prodcut(cls,pk):
-        product = cls.objects.get(pk=pk)
+        product = cls.objects.get(pk=pk)     
         return product
 
     def __str__(self):
         return self.name
 
-class Seller(models.Model):
+class Sell(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'seller')
     account_number = models.IntegerField()
 
@@ -80,7 +80,7 @@ class Seller(models.Model):
     def __str__(self):
         return self.name
 
-class Buyer(models.Model):
+class Buy(models.Model):
     name = models.CharField(max_length=140, blank= True)
     account_number = models.IntegerField()
 
@@ -98,10 +98,7 @@ class Buyer(models.Model):
         return self.name
 
 
-class Category(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'category')
-    name = models.CharField(max_length=140, blank=True)
-    description = models.CharField(max_length=140, blank=True)
+
 
     @classmethod
     def display_categories(cls):
