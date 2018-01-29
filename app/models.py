@@ -7,39 +7,36 @@ from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
-<<<<<<< HEAD
 
-=======
 import datetime as dt
->>>>>>> 995664b0fc43ae3d5cd08a30a752590ee66c5147
+
 
 class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=140, blank=True)
     last_name = models.CharField(max_length=140, blank=True)
-    phone_number = PhoneNumberField(max_length = 10, blank = True)
+    phone_number = PhoneNumberField(max_length=10, blank=True)
     location = models.CharField(max_length=140, blank=True)
     email = models.EmailField(max_length=140, blank=True)
     account = models.IntegerField(default=10000)
 
-<<<<<<< HEAD
 
 User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
 
-=======
     def __str__(self):
         return self.user.username
->>>>>>> 995664b0fc43ae3d5cd08a30a752590ee66c5147
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)#creates a profile when creating a user
+        # creates a profile when creating a user
+        Profile.objects.create(user=instance)
+
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-<<<<<<< HEAD
 
     post_save.connect(create_user_profile, sender=User)
 
@@ -53,13 +50,15 @@ class Product(models.Model):
     unit_price = models.DecimalField(max_digits=19, decimal_places=10)
     product_image = models.ImageField(upload_to='products')
     description = models.TextField()
-=======
-    instance.profile.save()#save a profile when saving a user
 
-@property 
+    instance.profile.save()  # save a profile when saving a user
+
+
+@property
 def photo_url(self):
     if self.photo and hasattr(self.photo, 'url'):
-        return self.photo.url   
+        return self.photo.url
+
 
 class Wheat(models.Model):
     quantity = models.IntegerField()
@@ -70,6 +69,7 @@ class Wheat(models.Model):
 
     def __str__(self):
         return self.user.username
+
     class Meta:
         ordering = ['-sell_time']
 
@@ -77,10 +77,11 @@ class Wheat(models.Model):
     def get_all_wheat_sales(cls):
         all_wheat = Wheat.objects.all()
         return all_wheat
-    
+
     @classmethod
     def get_total_amount(cls):
-        total_amount = Wheat.objects.values('unit_price') * Wheat.objects.values('quantity')
+        total_amount = Wheat.objects.values(
+            'unit_price') * Wheat.objects.values('quantity')
         return total_amount
 
     @classmethod
@@ -89,8 +90,8 @@ class Wheat(models.Model):
         return lowest_price
 
     @classmethod
-    def get_single_wheat(cls,pk):
-        single_wheat  = Wheat.objects.filter(pk=pk)
+    def get_single_wheat(cls, pk):
+        single_wheat = Wheat.objects.filter(pk=pk)
 
 
 class Coffee(models.Model):
@@ -102,6 +103,7 @@ class Coffee(models.Model):
 
     def __str__(self):
         return self.user.username
+
     class Meta:
         ordering = ['-sell_time']
 
@@ -109,10 +111,11 @@ class Coffee(models.Model):
     def get_all_coffee_sales(cls):
         all_coffee = Coffee.objects.all()
         return all_coffee
-    
+
     @classmethod
     def get_total_amount(cls):
-        total_amount = Coffee.objects.values('unit_price') * Coffee.objects.values('quantity')
+        total_amount = Coffee.objects.values(
+            'unit_price') * Coffee.objects.values('quantity')
         return total_amount
 
     @classmethod
@@ -121,32 +124,33 @@ class Coffee(models.Model):
         return lowest_price
 
     @classmethod
-    def get_single_wheat(cls,pk):
-        single_wheat  = Coffee.objects.filter(pk=pk)
+    def get_single_wheat(cls, pk):
+        single_wheat = Coffee.objects.filter(pk=pk)
 
     @classmethod
-    def get_user_wheat(cls,user_id):
+    def get_user_wheat(cls, user_id):
         user_coffee = Coffee.objects.filter(user=user.id).all()
         return user_coffee
+
 
 class Product(models.Model):
     name = models.CharField(max_length=140)
     quantity = models.IntegerField()
-    price  =  models.IntegerField()
+    price = models.IntegerField()
     unit_price = models.IntegerField()
-    product_image = models.ImageField(upload_to='products',blank=True)
+    product_image = models.ImageField(upload_to='products', blank=True)
     description = models.TextField(blank=True)
 
     def __str__(self):
         return self.user.username
+
     class Meta:
-        ordering  = ['name']
+        ordering = ['name']
 
     @classmethod
-    def get_product_by_name(cls,name):
+    def get_product_by_name(cls, name):
         products = Product.objects.filter(name=name).all()
         return products
->>>>>>> 995664b0fc43ae3d5cd08a30a752590ee66c5147
 
     @classmethod
     def display_buyersy_products(cls):
@@ -161,23 +165,23 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-<<<<<<< HEAD
 
 class Seller(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='seller')
     account_number = models.IntegerField()
-=======
-class Sell(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'sell')
-    product =  models.ForeignKey(Product,on_delete=models.CASCADE, related_name= 'sell')
 
+
+class Sell(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='sell')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='sell')
 
     @classmethod
-    def get_single_product(cls,pk):
+    def get_single_product(cls, pk):
         sell = cls.objects.get(pk=pk)
         return sell
->>>>>>> 995664b0fc43ae3d5cd08a30a752590ee66c5147
 
     @classmethod
     def display_buyers(cls):
