@@ -24,8 +24,9 @@ class Profile(models.Model):
 
 User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
 
-    def __str__(self):
-        return self.user.username
+
+def __str__(self):
+    return self.user.username
 
 
 @receiver(post_save, sender=User)
@@ -50,8 +51,6 @@ class Product(models.Model):
     unit_price = models.DecimalField(max_digits=19, decimal_places=10)
     product_image = models.ImageField(upload_to='products')
     description = models.TextField()
-
-    instance.profile.save()  # save a profile when saving a user
 
 
 @property
