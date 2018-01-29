@@ -32,7 +32,6 @@ def __str__(self):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        # creates a profile when creating a user
         Profile.objects.create(user=instance)
 
 
