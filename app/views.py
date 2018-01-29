@@ -2,13 +2,9 @@ from django.shortcuts import render,redirect
 from .forms import SellForm,CoffeeForm
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-<<<<<<< HEAD
 from .models import Product,Profile,Cart,ItemManager,Item,Buy,Sell,Category
-from cart import *
-=======
 from .models import Wheat,Profile,Cart,ItemManager,Item,Buyer,Sell,Category,Coffee
 from .cart import *
->>>>>>> 995664b0fc43ae3d5cd08a30a752590ee66c5147
 from django.views import generic
 from django.shortcuts import render, redirect
 from django.http import Http404
@@ -37,7 +33,7 @@ def landing_page(request):
         # return lowest
 
     current_user = request.user
-    current_profile = current_user.profile 
+    current_profile = current_user.profile
 
     if request.method == 'POST':
         form = SellForm(request.POST,request.FILES)
@@ -51,7 +47,7 @@ def landing_page(request):
             return redirect(landing_page)
     else:
 
-        form = SellForm()     
+        form = SellForm()
 
 
     coffee_products = Coffee.get_all_coffee_sales()
@@ -85,7 +81,7 @@ def index(request):
 @login_required(login_url = '/accounts/login/')
 def sell(request):
     current_user = request.user
-    current_profile = current_user.profile 
+    current_profile = current_user.profile
 
     if request.method == 'POST':
         form = SellForm(request.POST,request.FILES)
@@ -131,5 +127,3 @@ def remove_from_cart(request, product_id):
 @login_required(login_url='/accounts/login')
 def get_cart(request):
     return render_to_response('cart.html', dict(cart=Cart(request)))
-
-	

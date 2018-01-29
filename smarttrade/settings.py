@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'smart',
-        'USER': 'nevo',
-    'PASSWORD':'speeds01',
+        'USER': 'khalid',
+    'PASSWORD':'pythonista50',
     }
 }
 
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LOGIN_REDIRECT_URL = 'landing_page'
- 
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

@@ -1,6 +1,6 @@
-{% extends "registration/base.html" %} 
+{% extends "registration/base.html" %}
 {% load static %}
-{% load bootstrap3 %} 
+{% load bootstrap3 %}
 
 {% block content %}
 {{bock.super}}
@@ -34,11 +34,11 @@
     <div class="jumbotron" style="height: 69em;">
         <div class="container">
           <h1 class="text-center" style="color: #323a48;"><stron>COMMODITIES TRADING</stron></h1>
-         
+
       
           <h2 class="text-center color"><span style="color:  #FF7700; font-weight: bold;">1</span> DEPOSIT <span style="color:  #FF7700; font-weight: bold;">2</span> TRADE & <span style="color:  #FF7700; font-weight: bold;">3</span> WITHDRAW</h2>
-          
-       
+
+
           <h4 class="text-center grey">*Amount to be credited to account in case of successful trade</h4>
         </div>
         <div class="container">
@@ -58,7 +58,7 @@
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     <div class="form-group">
-                      <input type="submit" class="btn btn-primary btn-sm" value="REGISTER" style="width: 26.5em; height: 3.2em; background-color: #54ae2a; border-radius: 2px; font-weight: bold;"">
+                      <input type="submit" class="btn btn-primary btn-sm" value="REGISTER" style="width: 26.5em; height: 3.2em; background-color: #54ae2a; border-radius: 2px; font-weight: bold;">
                     </div>
 
                     <input type="hidden" name="next" value="{{next}}">
@@ -70,7 +70,7 @@
               </div>
             </div>
           </div>
-        </div>  
+        </div>
     </div>
     </div>
     <div class="row" style="padding-top: 2.8em; padding-bottom: 2.8em; margin-bottom: 3.1em;">
@@ -103,7 +103,7 @@
               </div>
               <div class="col-xs-12 col-md-3">
                 <h4 class="text-center" style="color: rgb(255, 119, 0);"><strong>DELIVERY</strong></h4>
-                <p class="text-center" style="color: #323a48; font-size: 17px;">Physical delivery of the commodities at your request anytime.</p>  
+                <p class="text-center" style="color: #323a48; font-size: 17px;">Physical delivery of the commodities at your request anytime.</p>
               </div>
             </div>
           </div>
@@ -127,5 +127,3 @@
       </div>
     </div>
 {% endblock %}
-      
-  
