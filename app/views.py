@@ -252,3 +252,10 @@ def remove_from_cart(request, product_id):
 @login_required(login_url='/accounts/login')
 def get_cart(request):
     return render_to_response('cart.html', dict(cart=Cart(request)))
+
+
+@login_required
+def profile(request, user_id):
+    user = User.objects.get(pk=user_id)
+    user.profile.username = 'first_name, last_name'
+    user.save()

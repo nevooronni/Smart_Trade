@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <h2>{{ user.get_full_name }}</h2>
+  <ul>
+    <li>Username: {{ user.profile.firstname }}</li>
+    <li>Username: {{ user.profile.lastname }}</li>
+    <li>Phone: {{ user.profile.phonenumber }}</li>
+    <li>Location: {{ user.profile.location }}</li>
+    <li>Email: {{user.email }}</li>
+    <li>Account Number: {{ user.profile.account_number }}</li>
+  </ul>
+
+</body>
+
+</html>
