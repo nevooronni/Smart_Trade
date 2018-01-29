@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
+
   {% block content %} {%endblock%} {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %} {% endblock %}
@@ -23,17 +23,10 @@
 <body>
   {% include 'navbar.html' %} {% block content %} {%endblock%} {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %} {% include 'navbar.html' %} {% block content %} {%endblock%} {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %} {% endblock %}
-=======
-  {% include 'navbar.html' %}
-  {% block content %}  {%endblock%}
 
-
-  {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {% bootstrap_javascript %}
-  {% endblock %}
->>>>>>> 995664b0fc43ae3d5cd08a30a752590ee66c5147
 
 </body>
 
