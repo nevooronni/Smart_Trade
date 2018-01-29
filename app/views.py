@@ -45,7 +45,6 @@ def index(request):
 @login_required(login_url='/accounts/login/')
 def landing_page(request):
     all_products = Product.objects.all()
-    return render(request, 'all-app/landing_page.html', {"products": all_products})
 
     # wheat
     wheat_products = Wheat.get_all_wheat_sales()
