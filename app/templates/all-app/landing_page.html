@@ -146,7 +146,7 @@
                           </div>
                           <div class="modal-body">
                             <br>
-                            <form action="{% url 'buy' %}" method="post" enctype="multipart/form-data">
+                            <form action="{% url 'buy'  %}" method="post" enctype="multipart/form-data">
                               {% csrf_token %}
                               {% bootstrap_form buy_form %}
                               <input type="submit" value="SUBMIT" value="post" class="btn" style="background-color: #03AB42; color: #fff; border-radius: 0px; height: 60px; width: 150px; margin-left: 7em;" id="sellorder"/>
@@ -393,7 +393,12 @@
         </div>
       </div>
       <div class="col-md-2" style="background-color: #323a48; height: 715.5px; border-left-style: solid; border-left-width: 2px; border-left-color: grey;">
-         
+          {% for item in cartitems %}
+            <h2>{{item.name}}</h2>
+            <h2>{{item.price}}</h2>
+            <h2>{{item.quantity}}</h2>
+            <h2>{{item.subtotal}}</h2>
+          {% endfor %}
       </div>
     </div>
 

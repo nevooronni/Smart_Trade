@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Profile,Wheat,Coffee,Sugar,Cotton
+from .models import Profile,Wheat,Coffee,Sugar,Cotton,CartItem
 
 class SellForm(forms.ModelForm):
 	class Meta:
@@ -23,7 +23,7 @@ class CottonForm(forms.ModelForm):
 		model = Cotton
 		fields = ('unit_price','quantity',)
 
-class BuyForm(forms.ModelForm):
+class CartItemForm(forms.ModelForm):
 	class Meta:
-		model = Wheat
+		model = CartItem
 		fields = ('quantity',)

@@ -37,7 +37,24 @@ def save_user_profile(sender, instance, **kwargs):
 @property 
 def photo_url(self):
     if self.photo and hasattr(self.photo, 'url'):
-        return self.photo.url   
+        return self.photo.url 
+
+class CartItem(models.Model):
+    name = models.CharField(max_length=140, blank=True)
+    price = models.IntegerField()
+    quantity = models.IntegerField()
+    subtotal = models.IntegerField()
+
+    @classmethod
+    def get_all_cartitems(cls):
+        all_cartitems = CartItem.objects.all()
+        return all_cartitems
+    
+
+    @classmethod
+    def get_total_price(cls):
+        total_price = Wheat.objects.all().aggregate(Sum('subtotal'))
+        return total_price  
 
 class Wheat(models.Model):
     quantity = models.IntegerField()

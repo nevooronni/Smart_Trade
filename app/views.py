@@ -1,20 +1,21 @@
 from django.shortcuts import render,redirect
-from .forms import SellForm,CoffeeForm,SugarForm,CottonForm,BuyForm
+from .forms import SellForm,CoffeeForm,SugarForm,CottonForm,CartItemForm
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-from .models import Wheat,Profile,Cart,ItemManager,Item,Buyer,Sell,Category,Coffee,Sugar,Cotton
+from .models import Wheat,Profile,CartItem,ItemManager,Item,Buyer,Sell,Category,Coffee,Sugar,Cotton
 from .cart import *
 from django.views import generic
 from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
     #buy forms 
-    buy_form = BuyForm()
+    buy_form = CartItemForm()
 
 
     #wheat
@@ -22,7 +23,7 @@ def landing_page(request):
     lowest_price = Wheat.get_lowest_price()
     print(lowest_price.get("unit_price__min"))
     price = lowest_price.get("unit_price__min")
-    retail_price = (price * 5/100) + price
+    # retail_price = (price * 5/100) + price
 
     def change(price):
         list_prices = []
@@ -126,8 +127,9 @@ def landing_page(request):
 
         cotton_form = CottonForm()
 
+    cartitems = CartItem.get_all_cartitems()
 
-    return render(request,'all-app/landing_page.html',{"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
+    return render(request,'all-app/landing_page.html',{"cartitems":cartitems,"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
@@ -159,20 +161,30 @@ def buy(request):
     current_user = request.user
     current_profile = current_user.profile
 
+    wheat_name = 'wheat'
+    lowest_price = Wheat.get_lowest_price()
+    print(lowest_price.get("unit_price__min"))
+    wheat_price = lowest_price.get("unit_price__min")
+
+
     if request.method == 'POST':
-        buy_form = BuyForm(request.POST,request.FILES)
+        buy_form = CartItemForm(request.POST,request.FILES)
 
         if buy_form.is_valid():
             buy = buy_form.save(commit=False)
             buy.user = current_user
             buy.profile = current_profile
+            buy.name = wheat_name 
+            buy.price = wheat_price 
+            buy.subtotal = buy.price * buy.quantity
             buy.save()
+
 
             return redirect(landing_page)
 
         else:
 
-            buy_form = BuyForm()
+            buy_form = CartItemForm()
 
 
 @login_required(login_url = '/accounts/login/')
@@ -233,19 +245,3 @@ def sell_cotton(request):
         cotton_form = CottonForm()
 
 
-@login_required(login_url='/accounts/login')
-def add_to_cart(request, product_id, quantity):
-    product = Product.objects.get(id=product_id)
-    cart = Cart(request)
-    cart.add(product, product.unit_price, quantity)
-
-@login_required(login_url='/accounts/login')
-def remove_from_cart(request, product_id):
-    product = Product.objects.get(id=product_id)
-    cart = Cart(request)
-    cart.remove(product)
-@login_required(login_url='/accounts/login')
-def get_cart(request):
-    return render_to_response('cart.html', dict(cart=Cart(request)))
-
-	
