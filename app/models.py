@@ -97,11 +97,11 @@ class Coffee(models.Model):
 
     @classmethod
     def get_lowest_price(cls):
-        lowest_price = cls.objects.all().aggregate(min('unit_price'))
+        lowest_price = cls.objects.all().aggregate(min('unit_price'))    
         return lowest_price
 
     @classmethod
-    def get_single_wheat(cls,pk):            
+    def get_single_wheat(cls,pk):
         single_wheat  = Coffee.objects.filter(pk=pk)
 
     @classmethod
