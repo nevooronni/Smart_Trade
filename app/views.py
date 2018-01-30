@@ -13,12 +13,30 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url = '/accounts/login/')
 def profile(request):
-    current_user = request.user
+    # current_user = request.user
 
-    print('Logged In')
-    profile = Profile.objects.filter(user=current_user)
+    # print('Logged In')
+    # profile = Profile.objects.filter(user=current_user)
 
-    return render(request, 'all-app/profile.html', {"profile":profile,"current_user":current_user})   
+    # current_profile = current_user.profile
+    # account_balance = current_user.profile.account
+
+    # cartitems = CartItem.get_all_cartitems()
+    # total = CartItem.get_total_price()
+    # print(total.get("subtotal__sum"))
+    # total_cost = total.get("subtotal__sum")
+
+    # transaction_cost = total_cost + (total_cost * 0.05)
+
+    # if transaction_cost <= account_balance:
+    #     new_account_balance = account_balance - transaction_cost
+       
+    # else:
+    #     please_topup = "Sorry you do not have enough funds in your account to complete the transaction please topup to continue!"
+
+    #     return HttpResponse(please_topup)  
+
+    return render(request, 'all-app/profile.html', )   
 
 
 @login_required(login_url = '/accounts/login/')
@@ -261,31 +279,6 @@ def sell_cotton(request):
 
         cotton_form = CottonForm()
 
-
-@login_required(login_url = '/accounts/login/')
-def place_order(request):
-    current_user = request.user
-    current_profile = current_user.profile
-    account_balance = current_user.profile.account
-
-    cartitems = CartItem.get_all_cartitems()
-    total = CartItem.get_total_price()
-    print(total.get("subtotal__sum"))
-    total_cost = total.get("subtotal__sum")
-
-    transaction_cost = total_cost + (total_cost * 0.05)
-
-    if transaction_cost <= account_balance:
-        new_account_balance = account_balance - transaction_cost
-        return redirect(profile)
-
-    else:
-        please_topup = "Sorry you do not have enough funds in your account to complete the transaction please topup to continue!"
-
-        return HttpResponse(please_topup)   
-
-    return redirect(landing_page) 
-
 @login_required(login_url = '/accounts/login/')
 def remove_item(request,id):
     current_user = request.user
@@ -294,4 +287,40 @@ def remove_item(request,id):
     item_removed = CartItem.remove_cartitem(id=id)
 
     return redirect(landing_page)
+
+@login_required(login_url = '/accounts/login/')
+def place_order(request):
+    current_user = request.user
+    current_profile = current_user.profile 
+    # profile = Profile.objects.filter(user=current_user)
+    account_balance = current_profile.account
+    print(account_balance)
+
+    cartitems = CartItem.get_all_cartitems()
+    total = CartItem.get_total_price()
+    print(total.get("subtotal__sum"))
+    total_cost = total.get("subtotal__sum")
+
+    transaction_cost = total_cost + (total_cost * 0.05)
+    print(transaction_cost)
+
+    if transaction_cost <= account_balance:
+        balance = account_balance - transaction_cost
+        new_account_balance = int(balance)
+        account_balance = new_account_balance
+        print(account_balance)
+
+        p = Profile.objects.get(user=current_user)
+        p.account = account_balance
+        print(p.account)
+        p.save()
+
+        return redirect(landing_page)
+
+    else:
+        please_topup = "Sorry you do not have enough funds in your account to complete the transaction please topup to continue!"
+
+        return HttpResponse(please_topup)   
+
+    return redirect(landing_page) 
 
