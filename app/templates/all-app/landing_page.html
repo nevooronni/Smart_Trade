@@ -398,7 +398,7 @@
             <h4 style="display: inline-block; color: #fff;">{{item.price}}</h4>
             <h4 style="display: inline-block; color: #fff;">{{item.quantity}}</h4>
             <h4 style="display: inline-block; color: #fff;">{{item.subtotal}}</h4>
-            <a href="{% url 'delete_item' %}"><button class="btn">PLACE ORDER</button></a>
+            <a href="{% url 'remove_item' item.id %}"><button class="btn">Remove</button></a>
             <br>
           {% endfor %}
             <h3 style="color: red;">Total COST</h3>
