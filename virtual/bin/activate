@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/nevo/Desktop/python/smart_trade/virtual"
+VIRTUAL_ENV="/home/khalid/Smart_Trade/virtual"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

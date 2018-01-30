@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect
 from .forms import SellForm,CoffeeForm
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-from .models import Product,Profile,Cart,ItemManager,Item,Buy,Sell,Category
-from .models import Wheat,Profile,Cart,ItemManager,Item,Buyer,Sell,Category,Coffee
+from .models import Product,Profile,Cart,ItemManager,Item,Buy,Sell
+from .models import Wheat,Profile,Cart,ItemManager,Item,Buy,Sell,Coffee
 from .cart import *
 from django.views import generic
 from django.shortcuts import render, redirect
