@@ -1,0 +1,111 @@
+{% extends 'all-app/base.html' %}
+{% load static %}
+{% load bootstrap3 %} 
+
+{% block content %}
+{{bock.super}}
+    <style>
+       .viewall {
+        border-radius: 0px; 
+        background-color: #FF7700; 
+        color: #fff; 
+        width: 90px; 
+        margin-left: 20%;
+        margin-top: 5%;
+       }
+
+        .viewall:hover {
+          color: #FF7700;
+          background-color: #fff;
+        }
+
+      .sell:hover {
+        font-weight: bold;
+      }
+
+      #sellorder:hover {
+        font-weight: bold;
+      }
+    </style>
+    <div class="row" style="height: ;">
+      <div class="col-sm-1 col-md-1 active" style="background-color: #323a48; height: 718.5px; min-height: 100%; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+            <span style="margin-left: 10%;"><i class="glyphicon glyphicon-user" style="font-size: 40px; color: grey ;"></i></span>
+            <h5 style="color: grey;">PROFILE</h5>
+          </div>
+          <div class="col-xs-4 col-md-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;>
+            <span style="margin-left: 10%;""><i class="glyphicon glyphicon-signal" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey;">TRADE</h5>
+          </div>
+          <div class="col-xs-4 col-md-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-sort" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey;">FUTURES</h5>  
+          </div>
+          <div class="col-xs-4 col-md-2"></div> 
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-equalizer" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey;">MARKET ANALYSIS</h5>  
+          </div>
+          <div class="col-xs-4 col-md-2"></div> 
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-info-sign" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey; margin-left: 7%;">ABOUT</h5>  
+          </div>
+          <div class="col-xs-14 col-md-2"></div> 
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-question-sign" style="font-size: 40px; color: grey;""></i></span>
+            <h5 class="text-center" style="color: grey;">HELP</h5>  
+          </div>
+          <div class="col-xs-4 col-md-2"></div> 
+        </div>
+      </div>
+      <div class="col-sm-2 col-md-3" style="background-color: #323a48; height: 718.5px; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
+        <div class="row">
+          
+        </div>
+      </div>
+      <div class="col-md-4" style="background-color: #323a48; height: 718.5px; border-left-style: solid; border-left-width: 2px; border-left-color: grey;">
+        <div class="row">
+
+        </div>
+      </div>
+      <div class="col-md-4" style="background-color: #323a48; height: 718.5px; border-left-style: solid; border-left-width: 2px; border-left-color: grey;">
+          
+      </div>
+    </div>
+
+  <!-- <div>
+    <div class="row" style="height: auto; border-bottom-width: 2px; border-bottom-color: #fff;">
+      <div class="col-xs-12 col-md-1" style="background-color: #323a48; height: 100%; border-top-width: 2px; border-right-width: 2px; border-top-color: #fff; border-right-color: #fff;">
+       
+      </div>
+      <div class="col-xs-12 col-md-10" style="background-color: #323a48; height: 100%; border-top-width: 2px; border-right-width: 2px; border-top-color: #fff; border-right-color: #fff;">
+       
+      </div>
+      </div>
+      <div class="col-xs-12 col-md-1" style="background-color: #323a48; height: 100%; border-top-width: 2px; border-right-width: 2px; border-top-color: #fff; border-right-color: #fff;">
+       
+      </div>
+    </div>
+  </div> -->
+{% endblock %}
+

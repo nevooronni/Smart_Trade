@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns=[
 	url('^$',views.landing_page,name="landing_page"),
+	url(r'^profile/$',views.profile,name = 'profile'),
 	url('^index/$',views.index,name = "index"),	
 	url(r'^sell/$',views.sell,name = 'sell'),
 	url(r'^buy/$',views.buy,name = 'buy'),

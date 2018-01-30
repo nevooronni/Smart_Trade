@@ -11,6 +11,15 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required(login_url = '/accounts/login/')
+def profile(request):
+    current_user = request.user
+
+    print('Logged In')
+    profile = Profile.objects.filter(user=current_user)
+
+    return render(request, 'all-app/profile.html', {"profile":profile,"current_user":current_user})   
+
 
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
@@ -268,7 +277,7 @@ def place_order(request):
 
     if transaction_cost <= account_balance:
         new_account_balance = account_balance - transaction_cost
-        return redirect(profile_page)
+        return redirect(profile)
 
     else:
         please_topup = "Sorry you do not have enough funds in your account to complete the transaction please topup to continue!"
