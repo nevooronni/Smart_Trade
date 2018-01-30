@@ -8,6 +8,8 @@ from django.views import generic
 from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
+from graphos.sources.simple import SimpleDataSource
+from graphos.renderers.gchart import LineChart
 
 
 # Create your views here.
@@ -41,8 +43,27 @@ def profile(request):
 
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
+    data =  [
+        ['Year', 'Sales', 'Expenses'],
+        [2004, 1000, 400],
+        [2005, 1170, 460],
+        [2006, 660, 1120],
+        [2007, 1030, 540]
+    ]
+
+    #DataSource object
+    data_source = SimpleDataSource(data=data)
+
+    #Chart object
+    chart = LineChart(data_source)
+    
+
     #buy forms 
+
     buy_form = CartItemForm()
+    buy_sugar_form = CartItemForm()
+    buy_coffee_form = CartItemForm()
+    buy_cotton_form = CartItemForm()
 
 
     #wheat
@@ -160,7 +181,7 @@ def landing_page(request):
     print(total.get("subtotal__sum"))
     total_cost = total.get("subtotal__sum")
    
-    return render(request,'all-app/landing_page.html',{"total_cost":total_cost,"cartitems":cartitems,"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
+    return render(request,'all-app/landing_page.html', {"chart":chart,"buy_cotton_form":buy_cotton_form,"buy_coffee_form":buy_coffee_form,"buy_sugar_form":buy_sugar_form,"total_cost":total_cost,"cartitems":cartitems,"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
@@ -216,6 +237,96 @@ def buy(request):
         else:
 
             buy_form = CartItemForm()
+
+@login_required(login_url = '/accounts/login/')
+def buy_sugar(request):
+    current_user = request.user
+    current_profile = current_user.profile
+
+    sugar_name = 'sugar'
+    lowest_price = Sugar.get_lowest_price()
+    print(lowest_price.get("unit_price__min"))
+    sugar_price = lowest_price.get("unit_price__min")
+
+
+    if request.method == 'POST':
+        buy_sugar_form = CartItemForm(request.POST,request.FILES)
+
+        if buy_sugar_form.is_valid():
+            buy = buy_sugar_form.save(commit=False)
+            buy.user = current_user
+            buy.profile = current_profile
+            buy.name = sugar_name 
+            buy.price = sugar_price 
+            buy.subtotal = buy.price * buy.quantity
+            buy.save()
+
+
+            return redirect(landing_page)
+
+        else:
+
+            buy_sugar_form = CartItemForm()
+
+@login_required(login_url = '/accounts/login/')
+def buy_cotton(request):
+    current_user = request.user
+    current_profile = current_user.profile
+
+    cotton_name = 'cotton'
+    lowest_price = Cotton.get_lowest_price()
+    print(lowest_price.get("unit_price__min"))
+    cotton_price = lowest_price.get("unit_price__min")
+
+
+    if request.method == 'POST':
+        buy_cotton_form = CartItemForm(request.POST,request.FILES)
+
+        if buy_cotton_form.is_valid():
+            buy = buy_cotton_form.save(commit=False)
+            buy.user = current_user
+            buy.profile = current_profile
+            buy.name = cotton_name 
+            buy.price = cotton_price 
+            buy.subtotal = buy.price * buy.quantity
+            buy.save()
+
+
+            return redirect(landing_page)
+
+        else:
+
+            buy_cotton_form = CartItemForm()
+
+@login_required(login_url = '/accounts/login/')
+def buy_coffee(request):
+    current_user = request.user
+    current_profile = current_user.profile
+
+    coffee_name = 'coffee'
+    lowest_price = Coffee.get_lowest_price()
+    print(lowest_price.get("unit_price__min"))
+    coffee_price = lowest_price.get("unit_price__min")
+
+
+    if request.method == 'POST':
+        buy_coffee_form = CartItemForm(request.POST,request.FILES)
+
+        if buy_coffee_form.is_valid():
+            buy = buy_coffee_form.save(commit=False)
+            buy.user = current_user
+            buy.profile = current_profile
+            buy.name = coffee_name 
+            buy.price = coffee_price 
+            buy.subtotal = buy.price * buy.quantity
+            buy.save()
+
+
+            return redirect(landing_page)
+
+        else:
+
+            buy_coffee_form = CartItemForm()
 
 
 @login_required(login_url = '/accounts/login/')

@@ -58,7 +58,7 @@ class CartItem(models.Model):
 
     @classmethod
     def delete_all_cartitems(cls):
-        cls.objects.delete()
+        return cls.objects.all().delete()
 
     @classmethod
     def get_total_price(cls):
