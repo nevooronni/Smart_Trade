@@ -101,7 +101,7 @@ class Coffee(models.Model):
         return lowest_price
 
     @classmethod
-    def get_single_wheat(cls,pk):
+    def get_single_wheat(cls,pk):            
         single_wheat  = Coffee.objects.filter(pk=pk)
 
     @classmethod
