@@ -128,8 +128,11 @@ def landing_page(request):
         cotton_form = CottonForm()
 
     cartitems = CartItem.get_all_cartitems()
+    total = CartItem.get_total_price()
+    print(total.get("subtotal__sum"))
+    total_cost = total.get("subtotal__sum")
 
-    return render(request,'all-app/landing_page.html',{"cartitems":cartitems,"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
+    return render(request,'all-app/landing_page.html',{"total_cost":total_cost,"cartitems":cartitems,"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
@@ -188,6 +191,11 @@ def buy(request):
 
 
 @login_required(login_url = '/accounts/login/')
+def remove_buy(request):
+    current_user = request.user
+    current_profile = current_user.profile  
+
+@login_required(login_url = '/accounts/login/')
 def sell_sugar(request):
     current_user = request.user
     current_profile = current_user.profile 
@@ -244,4 +252,37 @@ def sell_cotton(request):
 
         cotton_form = CottonForm()
 
+
+@login_required(login_url = '/accounts/login/')
+def place_order(request):
+    current_user = request.user
+    current_profile = current_user.profile
+    account_balance = current_user.profile.account
+
+    cartitems = CartItem.get_all_cartitems()
+    total = CartItem.get_total_price()
+    print(total.get("subtotal__sum"))
+    total_cost = total.get("subtotal__sum")
+
+    transaction_cost = total_cost + (total_cost * 0.05)
+
+    if transaction_cost <= account_balance:
+        new_account_balance = account_balance - transaction_cost
+        return new_account_balance
+
+    else:
+        please_topup = "Sorry you do not have enough funds in your account to complete the transaction please topup to continue!"
+
+        return please_topup   
+
+    return redirect(landing_page) 
+
+@login_required(login_url = '/accounts/login/')
+def remove_item(request,id):
+    current_user = request.user
+    current_profile = current_user.profile 
+
+    item_removed = CartItem.remove_cartitem(id=id)
+
+    return redirect(landing_page)
 

@@ -11,6 +11,8 @@ urlpatterns=[
 	url(r'^sell_sugar/$',views.sell_sugar,name = 'sell_sugar'),
 	url(r'^sell_coffee/$',views.sell_coffee,name = 'sell_coffee'),
 	url(r'^sell_cotton/$',views.sell_cotton,name = 'sell_cotton'),
+	url(r'^place_order/$',views.place_order,name = 'place_order'),
+	url(r'^remove_item/(\d+)',views.remove_item,name = 'remove_item'),
 	#url(r'^cart/', views.get_cart, name= "cart"),
 ]
 

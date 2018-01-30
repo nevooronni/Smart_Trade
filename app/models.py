@@ -49,11 +49,16 @@ class CartItem(models.Model):
     def get_all_cartitems(cls):
         all_cartitems = CartItem.objects.all()
         return all_cartitems
+
+    @classmethod
+    def remove_cartitem(cls,id):
+        item_removed = CartItem.objects.filter(id=id).delete()
+
     
 
     @classmethod
     def get_total_price(cls):
-        total_price = Wheat.objects.all().aggregate(Sum('subtotal'))
+        total_price = CartItem.objects.all().aggregate(Sum('subtotal'))
         return total_price  
 
 class Wheat(models.Model):
