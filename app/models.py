@@ -21,6 +21,7 @@ class Profile(models.Model):
     location = models.CharField(max_length=140, blank=True)
     email = models.EmailField(max_length=140, blank=True)
     account = models.IntegerField(default=10000)
+    latest_cost = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
@@ -39,6 +40,7 @@ def photo_url(self):
     if self.photo and hasattr(self.photo, 'url'):
         return self.photo.url 
 
+
 class CartItem(models.Model):
     name = models.CharField(max_length=140, blank=True)
     price = models.IntegerField()
@@ -54,7 +56,9 @@ class CartItem(models.Model):
     def remove_cartitem(cls,id):
         item_removed = CartItem.objects.filter(id=id).delete()
 
-    
+    @classmethod
+    def delete_all_cartitems(cls):
+        cls.objects.delete()
 
     @classmethod
     def get_total_price(cls):

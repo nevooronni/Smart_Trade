@@ -154,11 +154,12 @@ def landing_page(request):
 
         cotton_form = CottonForm()
 
+    last_transaction_cost = current_profile.latest_cost
     cartitems = CartItem.get_all_cartitems()
     total = CartItem.get_total_price()
     print(total.get("subtotal__sum"))
     total_cost = total.get("subtotal__sum")
-
+   
     return render(request,'all-app/landing_page.html',{"total_cost":total_cost,"cartitems":cartitems,"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
 
 @login_required(login_url = '/accounts/login/')
@@ -312,8 +313,12 @@ def place_order(request):
 
         p = Profile.objects.get(user=current_user)
         p.account = account_balance
+        p.latest_cost = total_cost
+        print(p.latest_cost)
         print(p.account)
         p.save()
+
+        CartItem.delete_all_cartitems()
 
         return redirect(landing_page)
 
