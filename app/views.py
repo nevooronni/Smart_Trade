@@ -268,12 +268,12 @@ def place_order(request):
 
     if transaction_cost <= account_balance:
         new_account_balance = account_balance - transaction_cost
-        return new_account_balance
+        return redirect(profile_page)
 
     else:
         please_topup = "Sorry you do not have enough funds in your account to complete the transaction please topup to continue!"
 
-        return please_topup   
+        return HttpResponse(please_topup)   
 
     return redirect(landing_page) 
 
