@@ -44,7 +44,7 @@ def landing_page(request):
             sell.profile = current_profile
             sell.save()
 
-            return redirect(landing_page)
+            return redirect(landing_page)         
     else:
 
         form = SellForm()
