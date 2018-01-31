@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^sell_coffee/$', views.sell_coffee, name='sell_coffee'),
     url(r'^sell_cotton/$', views.sell_cotton, name='sell_cotton'),
     url(r'^profile/', views.profile, name="profile"),
+    url(r'^search/', views.search_results, name='search_results'),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,20 @@
+{%extends 'all-app/base.html'%} {% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if items%}
+    <h2>Found {{ items|length }} of searched term {{message}}</h2> {% else %}
+    <h2> Found 0 items for the search term {{message}}</h2> {% endif %}
+
+  </div>
+
+  <div class="row">
+
+    {% if items %} {% for item in items %}
+    <div class="col-sm-6 col-md-3">
+      <a href="{% url 'article' article.id%}"><h1>{{item.title}}</h1></a>
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+</div>
+{% endblock %}

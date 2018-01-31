@@ -30,16 +30,6 @@ def landing_page(request):
         change = list_prices[-1] - list_prices[-2]
 
         return change
-        # wheat_prices = []
-        # for p in wheat_products:
-        #     price_list = wheat_prices.append(p.unit_price)
-        # return price_list
-        # lowest = min(wheat_prices)
-        # product_prices = []
-        # for p in products:
-        #     product_prices.append(p.unit_price)
-        #     lowest = min(product_prices)
-        # return lowest
 
     current_user = request.user
     current_profile = current_user.profile
@@ -125,6 +115,19 @@ def landing_page(request):
         cotton_form = CottonForm()
 
     return render(request, 'all-app/landing_page.html', {"wheat_products": wheat_products, "change": change, "price": price, "form": form, "buy_form": buy_form, "coffee_products": coffee_products, "coffee_price": coffee_price, "coffee_form": coffee_form, "sugar_price": sugar_price, "sugar_form": sugar_form, "cotton_form": cotton_form, "cotton_price": cotton_price, "current_user": current_user, })
+
+
+def search_results(request):
+    if 'item' in request.GET and request.GET["item"]:
+        search_term = request.GET.get("item")
+        searched_items = Item.search_by_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-app/search.html', {"message": message, "items": searched_items})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-app/search.html', {"message": message})
 
 
 @login_required(login_url='/accounts/login/')
