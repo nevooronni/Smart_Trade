@@ -14,21 +14,6 @@ h1
   color: #fff;
 }
 
-/*.glyphicon-signal {
-  background-color: rgb(255, 119, 0);
-  color: #fff;
-  border-radius: 50%;
-  text-decoration: none;
-  z-index: 5;
-}
-
-.glyphicon-signal {
-  background-color: rgb(255, 119, 0);
-  color: #fff;
-  border-radius: 50%;
-  text-decoration: none;  
-}
-*/
 #navbar-header {
   padding-top: 0.5%;
   padding-left: 3%;
@@ -51,7 +36,7 @@ h1
 }
 
 #platform {
-  color: #FF7700; 
+  color: #FF7700;
 }
 
 #panel-body {
@@ -66,13 +51,13 @@ h1
 #logo {
   color: #fff;
   border-radius: 50%;
-  text-decoration: none; 
+  text-decoration: none;
   margin-right: ;
-  font-size: 23px;   
+  font-size: 23px;
 }
 
 #span {
-  
+
   height: 140px;
   width: 140px;
 }
@@ -90,13 +75,6 @@ h1
   background-color: rgba(0,0,0,.7);
 }
 
-/*#login2 {
-  margin-top: -24%;
-  height: 71px;
-  width: 120px;
-  border-radius: 0px;
-}
-*/
 #smart {
   color: #fff;
   font-weight: bold;
