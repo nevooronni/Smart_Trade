@@ -19,6 +19,19 @@
           background-color: #fff;
         }
 
+      #remove {
+        border-radius: 0px; 
+        color: #fff; 
+        background-color: 
+        #FF7700; 
+        font-weight: bold;
+      }
+
+      #remove:hover {
+        color: #FF7700;
+        background-color: #fff;     
+      }
+
       .sell:hover {
         font-weight: bold;
       }
@@ -36,11 +49,15 @@
       }
 
       #mychart {
-        height: 200px; 
-        width: 300px;
+        height: 100px; 
+        width: 200px;
       }
     </style>
-  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+      </script>
+      
     <div class="row" style="height: ;">
       <div class="col-sm-1 col-md-1 active" style="background-color: #323a48; height: 718.5px; min-height: 100%; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
         <div class="row dashboard">
@@ -117,9 +134,24 @@
           <div class="col-lg-6 col-md-6" style="border-width: 2px; border-color: grey; border-style: solid; height: 357px; background-image: url('{{product.product_image.}}'); background-size: cover; background-repeat: none;">
             <div class="row">
               <div class="col-md-8">
-                <h1 class="text-center" style="color: #FF7700;">WHEAT</h1>
-                <div id="mychart">
-                  {{ chart.as_html }}
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row" style="padding-top: 20px;">
+                      <div class="col-md-1">
+                        <i class="glyphicon glyphicon-signal" style="color: #fff; border-radius: 50%;text-decoration: none; margin-right: 0.3em; font-size: 13px; background-color: rgb(255, 119, 0); height: 30px; width: 30px; padding-top: 0.4em; padding-left: 0.4em;"></i>
+                      </div>
+                      <div class="col-md-10">
+                        <h4 class="text-center" style="color: #fff; float: left; margin-left: 9px;">WHEAT</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div id="mychart">  
+                      {{ chart.as_html }}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="col-md-4">
@@ -150,7 +182,7 @@
                               <br>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">Balance</h4>
-                              <h4 style="display: inline-block; color: #F54031; font-weight: bold;">{{current_user.profile.account}}</h4>
+                              <h4 style="display: inline-block; color: #F54031; font-weight: bold;">ksh{{current_user.profile.account}}</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #F54031; font-weight: bold;">2345</h4>
@@ -190,7 +222,7 @@
                               <br>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">Balance</h4>
-                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">{{current_user.profile.account}}</h4>
+                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">Ksh{{current_user.profile.account}}</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
@@ -220,22 +252,41 @@
           </div>
           <div class="col-lg-6 col-md-6" style="border-width: 2px; border-color: grey; border-style: solid; height: 357px; background-image: url('{{product.product_image.}}'); background-size: cover; background-repeat: none;">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-8">
                 <div class="row">
-                  <div class="col-md-1"></div>
-                  <div class="col-md-10" style="height: 200px; padding-top: 10%; padding-bottom: 0px;">
-                    <h1 class="text-center" style="color: #FF7700;">SUGAR</h1>
-                    <h5 class="text-center" style="font-size: 45px; color: #fff;">Ksh {{sugar_price}}</h5>
-                    <h1 class="text-center" style="font-size: 45px; color: ;">+84%</h1>
+                  <div class="col-md-12">
+                    <div class="row" style="padding-top: 20px;">
+                      <div class="col-md-1">
+                        <i class="glyphicon glyphicon-signal" style="color: #fff; border-radius: 50%;text-decoration: none; margin-right: 0.3em; font-size: 13px; background-color: rgb(255, 119, 0); height: 30px; width: 30px; padding-top: 0.4em; padding-left: 0.4em;"></i>
+                      </div>
+                      <div class="col-md-10">
+                        <h4 class="text-center" style="color: #fff; float: left; margin-left: 9px;">SUGAR</h4>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-1"></div>
                 </div>
-                <div class="row" style="margin-top: 12%;">
-                  <div class="col-md-1"></div>
-                  <div class="col-md-10">
-                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-right: 3%; height: 60px; display: inline;" data-toggle="modal" data-target="#myModalSugar"><i class=""></i>BUY</button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div id="mychart">  
+                      {{ chart.as_html }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row">
+                  <div class="col-md-12" style="height: 150px; padding-top: 1%; padding-bottom: 0px;">
+
+                    <h1 class="text-center" style="font-size: ; color: #fff;">Ksh {{sugar_price}}</h1>
+                    <h1 class="text-center" style="font-size: ; color: ;">+{{change}}%</h1>
+                  </div>
+                </div> 
+                <div class="row" style="margin-top: 0px;">
+                  <div class="col-md-12">
+                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 120px; font-weight: bold; margin-right: 0%; height: 80px; display: inline;" data-toggle="modal" data-target="#myModalwheat"><i class=""></i>BUY</button>
+                    >
                     <!-- Modal -->
-                    <div id="myModalSugar" class="modal fade" role="dialog">
+                    <div id="myModalwheat" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
 
                         <!-- Modal content-->
@@ -250,7 +301,7 @@
                               <br>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">Balance</h4>
-                              <h4 style="display: inline-block; color: #F54031; font-weight: bold;">{{current_user.profile.account}}</h4>
+                              <h4 style="display: inline-block; color: #F54031; font-weight: bold;">Ksh{{current_user.profile.account}}</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #F54031; font-weight: bold;">2345</h4>
@@ -270,11 +321,12 @@
                             </form>
                           </div>
                         </div>
+
                       </div>
                     </div>
-                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px; display: inline;" data-toggle="modal" data-target="#myModal2"><i class=""></i>SELL</button>
+                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 120px; font-weight: bold; border-radius: 0px; height: 80px; display: inline;" data-toggle="modal" data-target="#myModalSugar"><i class=""></i>SELL</button>
                     <!-- Modal -->
-                    <div id="myModal2" class="modal fade" role="dialog">
+                    <div id="myModalSugar" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
 
                         <!-- Modal content-->
@@ -289,7 +341,7 @@
                               <br>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">Balance</h4>
-                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">{{current_user.profile.account}}</h4>
+                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">Ksh{{current_user.profile.account}}</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
@@ -298,7 +350,7 @@
                               <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Sugar</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
-                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">{{sugar_price}}</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Ksh {{sugar_price}}</h4>
                           </div>
                           <div class="modal-body">
                             <br>
@@ -313,7 +365,6 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-1"></div>
                 </div>
               </div>
             </div>
@@ -421,6 +472,13 @@
             </div>
           </div>
 
+
+
+
+
+
+
+
           <div class="col-lg-6 col-md-6" style="border-width: 2px; border-color: grey; border-style: solid; height: 357px; background-image: url('{{product.product_image.}}'); background-size: cover; background-repeat: none;">
             <div class="row">
               <div class="col-md-12">
@@ -523,22 +581,44 @@
           </div>
         </div>
       </div>
-      <div class="col-md-2" style="background-color: #323a48; height: 718.5px; border-left-style: solid; border-left-width: 2px; border-left-color: grey;">
-          {% for item in cartitems %}
-            <h4 style="display: inline-block; color: #fff;">{{item.name}}</h4>
-            <h4 style="display: inline-block; color: #fff;">{{item.price}}</h4>
-            <h4 style="display: inline-block; color: #fff;">{{item.quantity}}</h4>
-            <h4 style="display: inline-block; color: #fff;">{{item.subtotal}}</h4>
-            <a href="{% url 'remove_item' item.id %}"><button class="btn">Remove</button></a>
-            <br>
-          {% endfor %}
-          {% if total_cost %}
-            <h3 style="color: red;">Total COST</h3>
-
-            <h4 style="color: #fff;">{{total_cost}}</h4>
-            <h4>Transaction cost(5%)</h4>
-            <a href="{% url 'place_order' %}"><button class="btn">PLACE ORDER</button></a>
-          {% endif %}
+      <div class="col-md-2" style="background-color: #192030; height: 718.5px; border-left-style: solid; border-left-width: 2px; border-left-color: grey;">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row"  style="padding-bottom: 7px; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: grey;">
+              <div class="col-md-12">
+                <h4 style="text-align: center; color: grey;">ORDERS</h4>
+                <h4 style="text-align: center; color: grey;">Commodity / Price </h4>
+              </div>
+            </div>
+            {% for item in cartitems %}
+            <div class="row"  style="padding-bottom: 7px; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: grey; padding-top: 10px;">
+              <div class="col-md-3">
+                <h4 style="display: inline-block; color: #fff; font-weight: bold;">{{item.name}}</h4> 
+              </div>
+              <div class="col-md-3">
+                <h4 style="display: inline-block; color: #03AB42; font-weight: bold;">{{item.subtotal}}</h4>
+              </div>
+              <div class="col-md-6">
+                <a href="{% url 'remove_item' item.id %}"><button class="btn" id="remove">Remove</button></a>
+              </div>
+              
+            </div>
+            {% endfor %} 
+            <div class="row" style="padding-top: 10px;">
+              {% if total_cost %}
+              <div class="col-md-3">
+                <h4 style="display: inline-block; color: #fff; font-weight: bold;">Total</h4> 
+              </div>
+              <div class="col-md-3">
+                <h4 style="display: inline-block; color: #03AB42; font-weight: bold;">{{total_cost}}</h4>
+              </div>
+              <div class="col-md-6">
+                <a href="{% url 'place_order' %}"><button class="btn" style="background-color: #03AB42; color: #fff; border-radius: 0px; padding-right: 18px; padding-left: 18px;">Buy  All</button></a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

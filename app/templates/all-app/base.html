@@ -15,16 +15,12 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
       {% endblock %}
   </head>
-  <body style="max-height: 100%; background-image: url('static/img/map.png'); background-repeat: none; background-size: cover;">
+  <body style="max-height: 100%;">
       {% include "navbar.html" %}
       {% block content %} 
       {% endblock %}
       {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript">
-            google.load("visualization", "1", {packages:["corechart"]});
-        </script>
         {% bootstrap_javascript %}
       {% endblock %}
   </body>

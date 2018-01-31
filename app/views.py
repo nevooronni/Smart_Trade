@@ -10,8 +10,8 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from graphos.sources.simple import SimpleDataSource
 from graphos.renderers.gchart import LineChart
-
-
+from graphos.sources.model import ModelDataSource
+from graphos.renderers import gchart
 # Create your views here.
 @login_required(login_url = '/accounts/login/')
 def profile(request):
@@ -43,23 +43,14 @@ def profile(request):
 
 @login_required(login_url = '/accounts/login/')
 def landing_page(request):
-    data =  [
-        ['Year', 'Sales', 'Expenses'],
-        [2004, 1000, 400],
-        [2005, 1170, 460],
-        [2006, 660, 1120],
-        [2007, 1030, 540]
-    ]
-
-    #DataSource object
-    data_source = SimpleDataSource(data=data)
-
-    #Chart object
-    chart = LineChart(data_source)
-    
+    queryset = Wheat.objects.all()
+    data_source = ModelDataSource(queryset, 
+                                    fields=['sell_time','unit_price'])
+    print(data_source)
+    #gchart pass data_source here
+    chart = gchart.LineChart(data_source)
 
     #buy forms 
-
     buy_form = CartItemForm()
     buy_sugar_form = CartItemForm()
     buy_coffee_form = CartItemForm()
@@ -181,7 +172,7 @@ def landing_page(request):
     print(total.get("subtotal__sum"))
     total_cost = total.get("subtotal__sum")
    
-    return render(request,'all-app/landing_page.html', {"chart":chart,"buy_cotton_form":buy_cotton_form,"buy_coffee_form":buy_coffee_form,"buy_sugar_form":buy_sugar_form,"total_cost":total_cost,"cartitems":cartitems,"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
+    return render(request,'all-app/landing_page.html',{"buy_cotton_form":buy_cotton_form,"buy_coffee_form":buy_coffee_form,"buy_sugar_form":buy_sugar_form,"total_cost":total_cost,"cartitems":cartitems,"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
