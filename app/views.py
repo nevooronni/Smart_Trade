@@ -117,6 +117,7 @@ def landing_page(request):
     return render(request, 'all-app/landing_page.html', {"wheat_products": wheat_products, "change": change, "price": price, "form": form, "buy_form": buy_form, "coffee_products": coffee_products, "coffee_price": coffee_price, "coffee_form": coffee_form, "sugar_price": sugar_price, "sugar_form": sugar_form, "cotton_form": cotton_form, "cotton_price": cotton_price, "current_user": current_user, })
 
 
+@login_required(login_url='/accounts/login/')
 def search_results(request):
     if 'contract' in request.GET and request.GET["contract"]:
         search_term = request.GET.get("contract")
