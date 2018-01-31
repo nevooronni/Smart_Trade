@@ -283,10 +283,10 @@
                 </div> 
                 <div class="row" style="margin-top: 0px;">
                   <div class="col-md-12">
-                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 120px; font-weight: bold; margin-right: 0%; height: 80px; display: inline;" data-toggle="modal" data-target="#myModalwheat"><i class=""></i>BUY</button>
+                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 120px; font-weight: bold; margin-right: 0%; height: 80px; display: inline;" data-toggle="modal" data-target="#myModalSugar"><i class=""></i>BUY</button>
                     >
                     <!-- Modal -->
-                    <div id="myModalwheat" class="modal fade" role="dialog">
+                    <div id="myModalSugar" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
 
                         <!-- Modal content-->
@@ -324,9 +324,9 @@
 
                       </div>
                     </div>
-                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 120px; font-weight: bold; border-radius: 0px; height: 80px; display: inline;" data-toggle="modal" data-target="#myModalSugar"><i class=""></i>SELL</button>
+                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 120px; font-weight: bold; border-radius: 0px; height: 80px; display: inline;" data-toggle="modal" data-target="#myModal3"><i class=""></i>SELL</button>
                     <!-- Modal -->
-                    <div id="myModalSugar" class="modal fade" role="dialog">
+                    <div id="myModal3" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
 
                         <!-- Modal content-->
@@ -372,20 +372,39 @@
 
           <div class="col-lg-6 col-md-6" style="border-width: 2px; border-color: grey; border-style: solid; height: 357px; background-image: url('{{product.product_image.}}'); background-size: cover; background-repeat: none;">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-8">
                 <div class="row">
-                  <div class="col-md-1"></div>
-                  <div class="col-md-10" style="height: 200px; padding-top: 10%; padding-bottom: 0px;">
-                    <h1 class="text-center" style="color: #FF7700;">COFFEE</h1>
-                    <h5 class="text-center" style="font-size: 45px; color: #fff;">Ksh {{coffee_price}}</h5>
-                    <h1 class="text-center" style="font-size: 45px; color: ;">+84%</h1>
+                  <div class="col-md-12">
+                    <div class="row" style="padding-top: 20px;">
+                      <div class="col-md-1">
+                        <i class="glyphicon glyphicon-signal" style="color: #fff; border-radius: 50%;text-decoration: none; margin-right: 0.3em; font-size: 13px; background-color: rgb(255, 119, 0); height: 30px; width: 30px; padding-top: 0.4em; padding-left: 0.4em;"></i>
+                      </div>
+                      <div class="col-md-10">
+                        <h4 class="text-center" style="color: #fff; float: left; margin-left: 9px;">COFFEE</h4>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-1"></div>
                 </div>
-                <div class="row" style="margin-top: 12%;">
-                  <div class="col-md-1"></div>
-                  <div class="col-md-10">
-                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-right: 3%; height: 60px; display: inline;" data-toggle="modal" data-target="#myModalCoffee"><i class=""></i>BUY</button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div id="mychart">  
+                      {{ chart.as_html }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row">
+                  <div class="col-md-12" style="height: 150px; padding-top: 1%; padding-bottom: 0px;">
+
+                    <h1 class="text-center" style="font-size: ; color: #fff;">Ksh {{coffee_price}}</h1>
+                    <h1 class="text-center" style="font-size: ; color: ;">+{{change}}%</h1>
+                  </div>
+                </div> 
+                <div class="row" style="margin-top: 0px;">
+                  <div class="col-md-12">
+                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 120px; font-weight: bold; margin-right: 0%; height: 80px; display: inline;" data-toggle="modal" data-target="#myModalCoffee"><i class=""></i>BUY</button>
+                    >
                     <!-- Modal -->
                     <div id="myModalCoffee" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
@@ -402,7 +421,7 @@
                               <br>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">Balance</h4>
-                              <h4 style="display: inline-block; color: #F54031; font-weight: bold;">{{current_user.profile.account}}</h4>
+                              <h4 style="display: inline-block; color: #F54031; font-weight: bold;">Ksh{{current_user.profile.account}}</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #F54031; font-weight: bold;">2345</h4>
@@ -422,10 +441,10 @@
                             </form>
                           </div>
                         </div>
+
                       </div>
                     </div>
-
-                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px; display: inline;" data-toggle="modal" data-target="#myModal3"><i class=""></i>SELL</button>
+                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 120px; font-weight: bold; border-radius: 0px; height: 80px; display: inline;" data-toggle="modal" data-target="#myModal3"><i class=""></i>SELL</button>
                     <!-- Modal -->
                     <div id="myModal3" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
@@ -442,7 +461,7 @@
                               <br>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">Balance</h4>
-                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">{{current_user.profile.account}}</h4>
+                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">Ksh{{current_user.profile.account}}</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
@@ -451,13 +470,13 @@
                               <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Coffee</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
-                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">{{coffee_price}}</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Ksh {{coffee_price}}</h4>
                           </div>
                           <div class="modal-body">
                             <br>
                             <form action="{% url 'sell_coffee' %}" method="post" enctype="multipart/form-data">
                               {% csrf_token %}
-                              {% bootstrap_form coffee_form %}
+                              {% bootstrap_form sugar_form %}
                               <input type="submit" value="SUBMIT" value="post" class="btn" style="background-color: #F54031; color: #fff; border-radius: 0px; height: 60px; width: 150px; margin-left: 7em;" id="sellorder"/>
                             </form>
                           </div>
@@ -466,37 +485,48 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-1"></div>
                 </div>
               </div>
             </div>
           </div>
 
-
-
-
-
-
-
-
           <div class="col-lg-6 col-md-6" style="border-width: 2px; border-color: grey; border-style: solid; height: 357px; background-image: url('{{product.product_image.}}'); background-size: cover; background-repeat: none;">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-8">
                 <div class="row">
-                  <div class="col-md-1"></div>
-                  <div class="col-md-10" style="height: 200px; padding-top: 10%; padding-bottom: 0px;">
-                    <h1 class="text-center" style="color: #FF7700;">COTTON</h1>
-                    <h5 class="text-center" style="font-size: 45px; color: #fff;">Ksh {{cotton_price}}</h5>
-                    <h1 class="text-center" style="font-size: 45px; color: ;">+84%</h1>
+                  <div class="col-md-12">
+                    <div class="row" style="padding-top: 20px;">
+                      <div class="col-md-1">
+                        <i class="glyphicon glyphicon-signal" style="color: #fff; border-radius: 50%;text-decoration: none; margin-right: 0.3em; font-size: 13px; background-color: rgb(255, 119, 0); height: 30px; width: 30px; padding-top: 0.4em; padding-left: 0.4em;"></i>
+                      </div>
+                      <div class="col-md-10">
+                        <h4 class="text-center" style="color: #fff; float: left; margin-left: 9px;">COTTON</h4>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-1"></div>
                 </div>
-                <div class="row" style="margin-top: 12%;">
-                  <div class="col-md-1"></div>
-                  <div class="col-md-10">
-                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 140px; font-weight: bold; margin-right: 3%; height: 60px; display: inline;" data-toggle="modal" data-target="#myModalCotton"><i class=""></i>BUY</button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div id="mychart">  
+                      {{ chart.as_html }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row">
+                  <div class="col-md-12" style="height: 150px; padding-top: 1%; padding-bottom: 0px;">
+
+                    <h1 class="text-center" style="font-size: ; color: #fff;">Ksh {{cotton_price}}</h1>
+                    <h1 class="text-center" style="font-size: ; color: ;">+{{change}}%</h1>
+                  </div>
+                </div> 
+                <div class="row" style="margin-top: 0px;">
+                  <div class="col-md-12">
+                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 120px; font-weight: bold; margin-right: 0%; height: 80px; display: inline;" data-toggle="modal" data-target="#myModalSugar"><i class=""></i>BUY</button>
+                    >
                     <!-- Modal -->
-                    <div id="myModalCotton" class="modal fade" role="dialog">
+                    <div id="myModalSugar" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
 
                         <!-- Modal content-->
@@ -511,13 +541,13 @@
                               <br>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">Balance</h4>
-                              <h4 style="display: inline-block; color: #F54031; font-weight: bold;">{{current_user.profile.account}}</h4>
+                              <h4 style="display: inline-block; color: #F54031; font-weight: bold;">Ksh{{current_user.profile.account}}</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #F54031; font-weight: bold;">2345</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Buy</h4>
-                              <h4 class="text-center" style="display: inline-block; color: #F54031; font-weight: bold;">Cotton</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #F54031; font-weight: bold;">Sugar</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
                               <h4 class="text-center" style="display: inline-block; color: #F54031; font-weight: bold;">ksh {{cotton_price}}</h4>
@@ -531,9 +561,10 @@
                             </form>
                           </div>
                         </div>
+
                       </div>
                     </div>
-                    <button class="btn sell" style="display: block; background-color: #F54031; color: #fff; width: 140px; font-weight: bold; border-radius: 0px; height: 60px; display: inline;" data-toggle="modal" data-target="#myModal4"><i class=""></i>SELL</button>
+                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 120px; font-weight: bold; border-radius: 0px; height: 80px; display: inline;" data-toggle="modal" data-target="#myModal4"><i class=""></i>SELL</button>
                     <!-- Modal -->
                     <div id="myModal4" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
@@ -550,7 +581,7 @@
                               <br>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">Balance</h4>
-                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">{{current_user.profile.account}}</h4>
+                              <h4 style="display: inline-block; color: #35a947; font-weight: bold;">Ksh{{current_user.profile.account}}</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
@@ -559,7 +590,7 @@
                               <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Cotton</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
-                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">{{cotton_price}}</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Ksh {{cotton_price}}</h4>
                           </div>
                           <div class="modal-body">
                             <br>
@@ -574,7 +605,6 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-1"></div>
                 </div>
               </div>
             </div>
