@@ -65,6 +65,20 @@ class CartItem(models.Model):
         total_price = CartItem.objects.all().aggregate(Sum('subtotal'))
         return total_price  
 
+class TradingHistory(models.Model):
+    price = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+
+class wheat_futures(models.Model):
+    quantity = models.IntegerField()
+    unit_price = models.IntegerField()
+    sell_time = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    settlement_date = models.DateField(_("Date"), default=dt.date.today)
+
 class Wheat(models.Model):
     quantity = models.IntegerField()
     unit_price = models.IntegerField()

@@ -1,0 +1,158 @@
+{% extends 'all-app/base.html' %}
+{% load static %}
+{% load bootstrap3 %} 
+
+{% block content %}
+{{bock.super}}
+    <style>
+       .viewall2 {
+        border-radius: 0px; 
+        background-color: #FF7700; 
+        color: #fff; 
+        width: 90px; 
+        margin-left: 35%;
+        margin-top: 5%;
+       }
+
+        .viewall2:hover {
+          color: #FF7700;
+          background-color: #fff;
+        }
+
+      .sell:hover {
+        font-weight: bold;
+      }
+
+      #sellorder:hover {
+        font-weight: bold;
+      }
+
+
+      #bellow:hover {
+        color: #fff;
+      }
+
+      .dashboard:hover {
+        background-color: #192030;
+      }
+    </style>
+    <div class="row" style="height: ;">
+      <div class="col-sm-1 col-md-1 active" style="background-color: #323a48; height: 718.5px; min-height: 100%; border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey;">
+        <div class="row dashboard">
+          <div class="col-xs-4 col-md-2"></div>
+          <a href="{% url 'profile' %}"><div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+            <span style="margin-left: 10%;"><i class="glyphicon glyphicon-user" style="font-size: 40px; color: grey ;"></i></span>
+            <h5 style="color: grey;">PROFILE</h5>
+          </div></a>
+          <div class="col-xs-4 col-md-2"></div>
+        </div>
+        <div class="row dashboard">
+          <div class="col-xs-4 col-md-2"></div>
+          <a href="{% url 'landing_page' %}"><div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+            <span style="margin-left: 10%;"><i class="glyphicon glyphicon-signal" style="font-size: 40px; color: grey;"></i></span>
+            <h5 style="color: grey;">TRADE</h5>
+          </div></a>
+          <div class="col-xs-4 col-md-2"></div>
+        </div>
+        <div class="row dashboard">
+          <div class="col-xs-4 col-md-2"></div>
+          <a href="{% url 'futures' %}"><div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-sort" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey;">FUTURES</h5>  
+          </div></a>
+          <div class="col-xs-4 col-md-2"></div> 
+        </div>
+        <div class="row dashboard">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-equalizer" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey;">MARKET ANALYSIS</h5>  
+          </div>
+          <div class="col-xs-4 col-md-2"></div> 
+        </div>
+        <div class="row dashboard">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-info-sign" style="font-size: 40px; color: grey;""></i></span>
+            <h5 style="color: grey; margin-left: 7%;">ABOUT</h5>  
+          </div>
+          <div class="col-xs-14 col-md-2"></div> 
+        </div>
+        <div class="row dashboard">
+          <div class="col-xs-4 col-md-2"></div>
+          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+              <span style="margin-left: 10%;""><i class="glyphicon glyphicon-question-sign" style="font-size: 40px; color: grey;""></i></span>
+            <h5 class="text-center" style="color: grey;">HELP</h5>  
+          </div>
+          <div class="col-xs-4 col-md-2"></div> 
+        </div>
+      </div>
+      <div class="col-sm-2 col-md-3" style="background-color: #323a48; height: 719.5px;  border-bottom-width: 2px; border-bottom-color: grey; border-right: 2px solid grey; overflow-y: scroll;">
+        <div class="row">
+          <div class="col-md-12" style="padding-top: 5%; padding-left: 10%; padding-right: 10%;  padding-bottom: 8%; border-bottom-color: grey; border-bottom-width: 2px; border-bottom-style: solid;">
+            <h4 class="text-center" style="color: #fff;">WHEAT</h4>
+            <p class="text-center" style="color: grey;">Smart Trade is  the center of trading in agricultural commodities. We offer futures and options on the leading softs markets including coffee, cocoa, cotton, sugar and frozen concentrated orange juice, as well as a wide range of grains futures and options, including the leading canola futures contract.
+            </p>
+            <button class="btn viewall2">View All</button>
+            <p class="" style="color: #03AB42; margin-top: 5%; margin-left: 32%;font-weight: bold;">4 Commodities</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" style="padding-top: 5%; padding-left: 10%; padding-right: 10%;  padding-bottom: 8%; border-bottom-color: grey; border-bottom-width: 2px; border-bottom-style: solid;">
+            <h4 class="text-center" style="color: #fff;">SUGAR</h4>
+            <p class="text-center" style="color: grey;">Smart Trade is  the center of trading in agricultural commodities. We offer futures and options on the leading softs markets including coffee, cocoa, cotton, sugar and frozen concentrated orange juice, as well as a wide range of grains futures and options, including the leading canola futures contract.
+            </p>
+            <button class="btn viewall2">View All</button>
+            <p class="" style="color: #03AB42; margin-top: 5%; margin-left: 32%;font-weight: bold;">4 Commodities</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" style="padding-top: 5%; padding-left: 10%; padding-right: 10%;  padding-bottom: 8%; border-bottom-color: grey; border-bottom-width: 2px; border-bottom-style: solid;">
+            <h4 class="text-center" style="color: #fff;">COFFEE</h4>
+            <p class="text-center" style="color: grey;">Smart Trade is  the center of trading in agricultural commodities. We offer futures and options on the leading softs markets including coffee, cocoa, cotton, sugar and frozen concentrated orange juice, as well as a wide range of grains futures and options, including the leading canola futures contract.
+            </p>
+            <button class="btn viewall2">View All</button>
+            <p class="" style="color: #03AB42; margin-top: 5%; margin-left: 32%;font-weight: bold;">4 Commodities</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" style="padding-top: 5%; padding-left: 10%; padding-right: 10%;  padding-bottom: 8%; border-bottom-color: grey; border-bottom-width: 2px; border-bottom-style: solid;">
+            <h4 class="text-center" style="color: #fff;">COTTON</h4>
+            <p class="text-center" style="color: grey;">Smart Trade is  the center of trading in agricultural commodities. We offer futures and options on the leading softs markets including coffee, cocoa, cotton, sugar and frozen concentrated orange juice, as well as a wide range of grains futures and options, including the leading canola futures contract.
+            </p>
+            <button class="btn viewall2">View All</button>
+            <p class="" style="color: #03AB42; margin-top: 5%; margin-left: 32%;font-weight: bold;">4 Commodities</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" style="background-color: #323a48; height: 718.5px; border-left-style: solid; border-left-width: 2px; border-left-color: grey;">
+        <div class="row">
+        {% for item in cartitems %}
+          <h4 style="display: inline-block; color: #fff;">{{item.name}}</h4>
+          <h4 style="display: inline-block; color: #fff;">{{item.price}}</h4>
+          <h4 style="display: inline-block; color: #fff;">{{item.quantity}}</h4>
+          <h4 style="display: inline-block; color: #fff;">{{item.subtotal}}</h4>
+        {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-4" style="background-color: #323a48; height: 718.5px; border-left-style: solid; border-left-width: 2px; border-left-color: grey;">
+          
+      </div>
+    </div>
+
+  <!-- <div>
+    <div class="row" style="height: auto; border-bottom-width: 2px; border-bottom-color: #fff;">
+      <div class="col-xs-12 col-md-1" style="background-color: #323a48; height: 100%; border-top-width: 2px; border-right-width: 2px; border-top-color: #fff; border-right-color: #fff;">
+       
+      </div>
+      <div class="col-xs-12 col-md-10" style="background-color: #323a48; height: 100%; border-top-width: 2px; border-right-width: 2px; border-top-color: #fff; border-right-color: #fff;">
+       
+      </div>
+      </div>
+      <div class="col-xs-12 col-md-1" style="background-color: #323a48; height: 100%; border-top-width: 2px; border-right-width: 2px; border-top-color: #fff; border-right-color: #fff;">
+       
+      </div>
+    </div>
+  </div> -->
+{% endblock %}
+

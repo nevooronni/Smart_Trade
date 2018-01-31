@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import SellForm,CoffeeForm,SugarForm,CottonForm,CartItemForm
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-from .models import Wheat,Profile,CartItem,ItemManager,Item,Buyer,Sell,Category,Coffee,Sugar,Cotton
+from .models import Wheat,Profile,CartItem,ItemManager,Item,Buyer,Sell,Category,Coffee,Sugar,Cotton,TradingHistory
 from .cart import *
 from django.views import generic
 from django.shortcuts import render, redirect
@@ -15,7 +15,7 @@ from graphos.renderers import gchart
 # Create your views here.
 @login_required(login_url = '/accounts/login/')
 def profile(request):
-    # current_user = request.user
+    current_user = request.user
 
     # print('Logged In')
     # profile = Profile.objects.filter(user=current_user)
@@ -38,7 +38,12 @@ def profile(request):
 
     #     return HttpResponse(please_topup)  
 
-    return render(request, 'all-app/profile.html', )   
+    return render(request, 'all-app/profile.html',{"current_user":current_user})  
+
+@login_required(login_url = '/accounts/login/')
+def futures(request):
+
+    return render(request, 'all-app/futures.html',)
 
 
 @login_required(login_url = '/accounts/login/')
@@ -64,13 +69,6 @@ def landing_page(request):
     price = lowest_price.get("unit_price__min")
     # retail_price = (price * 5/100) + price
 
-    def change(price):
-        list_prices = []
-        list_prices.append(price)
-        print(list_prices)
-        change = list_prices[-1] - list_prices[-2]
-        
-        return change
         # wheat_prices = []
         # for p in wheat_products:
         #     price_list = wheat_prices.append(p.unit_price)
@@ -98,7 +96,6 @@ def landing_page(request):
     else:
 
         form = SellForm()
-
 
     coffee_products = Coffee.get_all_coffee_sales()
     lowest_price = Coffee.get_lowest_price()
@@ -151,6 +148,7 @@ def landing_page(request):
 
     current_user = request.user
     current_profile = current_user.profile
+    
 
     if request.method == 'POST':
         cotton_form = CottonForm(request.POST,request.FILES)
@@ -171,8 +169,8 @@ def landing_page(request):
     total = CartItem.get_total_price()
     print(total.get("subtotal__sum"))
     total_cost = total.get("subtotal__sum")
-   
-    return render(request,'all-app/landing_page.html',{"buy_cotton_form":buy_cotton_form,"buy_coffee_form":buy_coffee_form,"buy_sugar_form":buy_sugar_form,"total_cost":total_cost,"cartitems":cartitems,"wheat_products":wheat_products,"change":change,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
+
+    return render(request,'all-app/landing_page.html',{"buy_cotton_form":buy_cotton_form,"buy_coffee_form":buy_coffee_form,"buy_sugar_form":buy_sugar_form,"total_cost":total_cost,"cartitems":cartitems,"wheat_products":wheat_products,"price":price,"form":form,"buy_form":buy_form,"coffee_products":coffee_products,"coffee_price":coffee_price,"coffee_form":coffee_form,"sugar_price":sugar_price,"sugar_form":sugar_form,"cotton_form":cotton_form,"cotton_price":cotton_price,"current_user":current_user,})
 
 @login_required(login_url = '/accounts/login/')
 def index(request):
@@ -399,17 +397,16 @@ def place_order(request):
     account_balance = current_profile.account
     print(account_balance)
 
-    cartitems = CartItem.get_all_cartitems()
+    cartitems2 = CartItem.get_all_cartitems()
     total = CartItem.get_total_price()
-    print(total.get("subtotal__sum"))
     total_cost = total.get("subtotal__sum")
-
+    print(total)
     transaction_cost = total_cost + (total_cost * 0.05)
     print(transaction_cost)
 
     if transaction_cost <= account_balance:
         balance = account_balance - transaction_cost
-        new_account_balance = int(balance)
+        new_account_balance = balance
         account_balance = new_account_balance
         print(account_balance)
 
@@ -421,6 +418,7 @@ def place_order(request):
         p.save()
 
         CartItem.delete_all_cartitems()
+       
 
         return redirect(landing_page)
 

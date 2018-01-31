@@ -70,18 +70,18 @@
         </div>
         <div class="row dashboard">
           <div class="col-xs-4 col-md-2"></div>
-          <div class="col-xs-4 col-md-8" style="padding-top: 18%;>
+          <a href="{% url 'landing_page' %}"><div class="col-xs-4 col-md-8" style="padding-top: 18%;>
             <span style="margin-left: 10%;""><i class="glyphicon glyphicon-signal" style="font-size: 40px; color: grey;""></i></span>
             <h5 style="color: grey;">TRADE</h5>
-          </div>
+          </div></a>
           <div class="col-xs-4 col-md-2"></div>
         </div>
         <div class="row dashboard">
           <div class="col-xs-4 col-md-2"></div>
-          <div class="col-xs-4 col-md-8" style="padding-top: 18%;">
+          <a href="{% url 'futures' %}"><div class="col-xs-4 col-md-8" style="padding-top: 18%;">
               <span style="margin-left: 10%;""><i class="glyphicon glyphicon-sort" style="font-size: 40px; color: grey;""></i></span>
-            <h5 style="color: grey;">FUTURES</h5>  
-          </div>
+            <h5 style="color: grey;">FUTURES</h5>
+          </div></a>
           <div class="col-xs-4 col-md-2"></div> 
         </div>
         <div class="row dashboard">
@@ -159,7 +159,7 @@
                   <div class="col-md-12" style="height: 150px; padding-top: 1%; padding-bottom: 0px;">
 
                     <h1 class="text-center" style="font-size: ; color: #fff;">Ksh {{price}}</h1>
-                    <h1 class="text-center" style="font-size: ; color: ;">+{{change}}%</h1>
+                    <h1 class="text-center" style="font-size: ; color: ;">+{{price_change}}%</h1>
                   </div>
                 </div> 
                 <div class="row" style="margin-top: 0px;">
@@ -227,7 +227,7 @@
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
                               <br>
-                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Buy</h4>
+                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Sell</h4>
                               <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Wheat</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
@@ -324,9 +324,9 @@
 
                       </div>
                     </div>
-                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 120px; font-weight: bold; border-radius: 0px; height: 80px; display: inline;" data-toggle="modal" data-target="#myModal3"><i class=""></i>SELL</button>
+                    <button class="btn" style="display: block; background-color: #F54031; color: #fff; width: 120px; font-weight: bold; border-radius: 0px; height: 80px; display: inline;" data-toggle="modal" data-target="#myModal2"><i class=""></i>SELL</button>
                     <!-- Modal -->
-                    <div id="myModal3" class="modal fade" role="dialog">
+                    <div id="myModal2" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
 
                         <!-- Modal content-->
@@ -346,7 +346,7 @@
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
                               <br>
-                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Buy</h4>
+                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Sell</h4>
                               <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Sugar</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
@@ -466,7 +466,7 @@
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
                               <br>
-                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Buy</h4>
+                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Sell</h4>
                               <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Coffee</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
@@ -476,7 +476,7 @@
                             <br>
                             <form action="{% url 'sell_coffee' %}" method="post" enctype="multipart/form-data">
                               {% csrf_token %}
-                              {% bootstrap_form sugar_form %}
+                              {% bootstrap_form coffee_form %}
                               <input type="submit" value="SUBMIT" value="post" class="btn" style="background-color: #F54031; color: #fff; border-radius: 0px; height: 60px; width: 150px; margin-left: 7em;" id="sellorder"/>
                             </form>
                           </div>
@@ -523,10 +523,10 @@
                 </div> 
                 <div class="row" style="margin-top: 0px;">
                   <div class="col-md-12">
-                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 120px; font-weight: bold; margin-right: 0%; height: 80px; display: inline;" data-toggle="modal" data-target="#myModalSugar"><i class=""></i>BUY</button>
+                    <button class="btn" style="display: block; background-color: #03AB42; border-radius: 0px; color: #fff; width: 120px; font-weight: bold; margin-right: 0%; height: 80px; display: inline;" data-toggle="modal" data-target="#myModalCotton"><i class=""></i>BUY</button>
                     >
                     <!-- Modal -->
-                    <div id="myModalSugar" class="modal fade" role="dialog">
+                    <div id="myModalCotton" class="modal fade" role="dialog">
                       <div class="modal-dialog" style="width: 370px;">
 
                         <!-- Modal content-->
@@ -547,7 +547,7 @@
                               <h4 style="display: inline-block; color: #F54031; font-weight: bold;">2345</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Buy</h4>
-                              <h4 class="text-center" style="display: inline-block; color: #F54031; font-weight: bold;">Sugar</h4>
+                              <h4 class="text-center" style="display: inline-block; color: #F54031; font-weight: bold;">Cotton</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
                               <h4 class="text-center" style="display: inline-block; color: #F54031; font-weight: bold;">ksh {{cotton_price}}</h4>
@@ -586,7 +586,7 @@
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 7em;">PAYBILL</h4>
                               <h4 style="display: inline-block; color: #35a947; font-weight: bold;">2345</h4>
                               <br>
-                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Buy</h4>
+                              <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 9em;">Sell</h4>
                               <h4 class="text-center" style="display: inline-block; color: #35a947; font-weight: bold;">Cotton</h4>
                               <br>
                               <h4 style="margin-left: 1.8em; display: inline-block; margin-right: 5em;">Current Price</h4>
@@ -620,32 +620,49 @@
                 <h4 style="text-align: center; color: grey;">Commodity / Price </h4>
               </div>
             </div>
-            {% for item in cartitems %}
-            <div class="row"  style="padding-bottom: 7px; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: grey; padding-top: 10px;">
-              <div class="col-md-3">
-                <h4 style="display: inline-block; color: #fff; font-weight: bold;">{{item.name}}</h4> 
+            {% if cartitems %}
+              {% for item in cartitems %}
+              <div class="row"  style="padding-bottom: 7px; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: grey; padding-top: 10px;">
+                <div class="col-md-3">
+                  <h4 style="display: inline-block; color: #fff; font-weight: bold;">{{item.name}}</h4> 
+                </div>
+                <div class="col-md-3">
+                  <h4 style="display: inline-block; color: #03AB42; font-weight: bold;">{{item.subtotal}}</h4>
+                </div>
+                <div class="col-md-6">
+                  <a href="{% url 'remove_item' item.id %}"><button class="btn" id="remove">Remove</button></a>
+                </div>
+                
               </div>
-              <div class="col-md-3">
-                <h4 style="display: inline-block; color: #03AB42; font-weight: bold;">{{item.subtotal}}</h4>
-              </div>
-              <div class="col-md-6">
-                <a href="{% url 'remove_item' item.id %}"><button class="btn" id="remove">Remove</button></a>
-              </div>
-              
-            </div>
-            {% endfor %} 
-            <div class="row" style="padding-top: 10px;">
-              {% if total_cost %}
-              <div class="col-md-3">
-                <h4 style="display: inline-block; color: #fff; font-weight: bold;">Total</h4> 
-              </div>
-              <div class="col-md-3">
-                <h4 style="display: inline-block; color: #03AB42; font-weight: bold;">{{total_cost}}</h4>
-              </div>
-              <div class="col-md-6">
-                <a href="{% url 'place_order' %}"><button class="btn" style="background-color: #03AB42; color: #fff; border-radius: 0px; padding-right: 18px; padding-left: 18px;">Buy  All</button></a>
-              </div>
-              {% endif %}
+              {% endfor %} 
+              <div class="row" style="padding-top: 10px;">
+                {% if total_cost %}
+                <div class="col-md-3">
+                  <h4 style="display: inline-block; color: #fff; font-weight: bold;">Total</h4> 
+                </div>
+                <div class="col-md-3">
+                  <h4 style="display: inline-block; color: #03AB42; font-weight: bold;">{{total_cost}}</h4>
+                </div>
+                <div class="col-md-6">
+                  <a href="{% url 'place_order' %}"><button class="btn" style="background-color: #03AB42; color: #fff; border-radius: 0px; padding-right: 18px; padding-left: 18px;">Buy  All</button></a>
+                </div>
+                {% endif %}
+            {% else %}
+              {% for trade in trading_history %}
+                <div class="row"  style="padding-bottom: 7px; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: grey; padding-top: 10px;">
+                <div class="col-md-3">
+                  <h4 style="display: inline-block; color: #fff; font-weight: bold;">{{trade.name}}</h4> 
+                </div>
+                <div class="col-md-3">
+                  <h4 style="display: inline-block; color: #03AB42; font-weight: bold;">{{trade.subtotal}}</h4>
+                </div>
+                <div class="col-md-6">
+                  <a href="{% url 'remove_item' item.id %}"><button class="btn" id="remove">Done</button></a>
+                </div>
+                
+              </div>  
+              {% endfor %}
+            {% endif %}
             </div>
           </div>
         </div>
