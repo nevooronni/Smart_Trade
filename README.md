@@ -35,6 +35,7 @@ These instructions will get you a copy of the project up and running on your loc
 <ul>
   <li>Python3.6</li>
   <li>Postgresql</li>
+  <li>Django2.0</li>
  </ul>
 
 ## Technologies Used
@@ -42,12 +43,12 @@ These instructions will get you a copy of the project up and running on your loc
   <li>Python3.6</li>
   <li>Postgresql</li>
   <li>Django</li>
-  <li>Mpesa-API</li>
+  <li>Bootstrap3</li>
  </ul>
 
 ## Known Bugs
- For now the we haven't implemented future trade for all trading commodities.
-
+ * For now the we haven't implemented future trade for all trading commodities.
+* We haven't implemented online payment systems and USSD unctionality.
 
 ## Support and contact details
  Please reach out to the Smart_Trade team via this email address <email>smarttrade@gmail.com</email>
