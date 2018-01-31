@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^sell_sugar/$', views.sell_sugar, name='sell_sugar'),
     url(r'^sell_coffee/$', views.sell_coffee, name='sell_coffee'),
     url(r'^sell_cotton/$', views.sell_cotton, name='sell_cotton'),
-    #url(r'^cart/', views.get_cart, name= "cart"),
+    url(r'^profile/', views.profile, name="profile"),
 ]
 
 if settings.DEBUG:
