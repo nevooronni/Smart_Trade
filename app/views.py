@@ -120,10 +120,10 @@ def landing_page(request):
 def search_results(request):
     if 'contract' in request.GET and request.GET["contract"]:
         search_term = request.GET.get("contract")
-        searched_items = Item.search_by_title(search_term)
+        searched_contracts = Contract.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all-app/search.html', {"message": message, "contracts": searched_items})
+        return render(request, 'all-app/search.html', {"message": message, "contracts": searched_contracts})
 
     else:
         message = "You haven't searched for any term"
