@@ -118,12 +118,12 @@ def landing_page(request):
 
 
 def search_results(request):
-    if 'item' in request.GET and request.GET["item"]:
-        search_term = request.GET.get("item")
+    if 'contract' in request.GET and request.GET["contract"]:
+        search_term = request.GET.get("contract")
         searched_items = Item.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all-app/search.html', {"message": message, "items": searched_items})
+        return render(request, 'all-app/search.html', {"message": message, "contracts": searched_items})
 
     else:
         message = "You haven't searched for any term"
