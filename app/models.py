@@ -74,10 +74,16 @@ class TradingHistory(models.Model):
 class wheat_futures(models.Model):
     quantity = models.IntegerField()
     unit_price = models.IntegerField()
+    subtotal = models.IntegerField()
     sell_time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     settlement_date = models.DateField(_("Date"), default=dt.date.today)
+
+    @classmethod
+    def get_total_amount(cls):
+        total_amount = cls.objects.values('unit_price') * Wheat.objects.values('quantity')
+        return total_amount
 
 class Wheat(models.Model):
     quantity = models.IntegerField()

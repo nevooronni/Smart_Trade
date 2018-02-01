@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import SellForm,CoffeeForm,SugarForm,CottonForm,CartItemForm
 from django.conf.urls import url
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-from .models import Wheat,Profile,CartItem,ItemManager,Item,Buyer,Sell,Category,Coffee,Sugar,Cotton,TradingHistory
+from .models import Wheat,Profile,CartItem,ItemManager,Item,Buyer,Sell,Category,Coffee,Sugar,Cotton,TradingHistory,wheat_futures
 from .cart import *
 from django.views import generic
 from django.shortcuts import render, redirect
@@ -42,8 +42,12 @@ def profile(request):
 
 @login_required(login_url = '/accounts/login/')
 def futures(request):
+    current_user = request.user
+    current_profile = current_user.profile
 
-    return render(request, 'all-app/futures.html',)
+    all_wheat_futures = wheat_futures.objects.all()
+    
+    return render(request, 'all-app/futures.html',{"current_user":current_user,"all_wheat_futures":all_wheat_futures})
 
 
 @login_required(login_url = '/accounts/login/')
