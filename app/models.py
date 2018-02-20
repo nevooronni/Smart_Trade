@@ -13,10 +13,7 @@ import datetime as dt
 class Account(models.Model):
     pass
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
 class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile')
@@ -45,11 +42,8 @@ def save_user_profile(sender, instance, **kwargs):
 @property
 def photo_url(self):
     if self.photo and hasattr(self.photo, 'url'):
-<<<<<<< HEAD
         return self.photo.url
 
-=======
-        return self.photo.url 
 
 class CartItem(models.Model):
     name = models.CharField(max_length=140, blank=True)
@@ -63,16 +57,14 @@ class CartItem(models.Model):
         return all_cartitems
 
     @classmethod
-    def remove_cartitem(cls,id):
+    def remove_cartitem(cls, id):
         item_removed = CartItem.objects.filter(id=id).delete()
-
-    
 
     @classmethod
     def get_total_price(cls):
         total_price = CartItem.objects.all().aggregate(Sum('subtotal'))
-        return total_price  
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
+        return total_price
+
 
 class Wheat(models.Model):
     quantity = models.IntegerField()
@@ -138,23 +130,15 @@ class Coffee(models.Model):
         return lowest_price
 
     @classmethod
-<<<<<<< HEAD
     def get_single_coffee(cls, pk):
         single_coffee = Coffee.objects.filter(pk=pk)
-=======
-    def get_single_coffee(cls,pk):
-        single_coffee  = Coffee.objects.filter(pk=pk)
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
 
     @classmethod
     def get_user_wheat(cls, user_id):
         user_coffee = Coffee.objects.filter(user=user.id).all()
         return user_coffee
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
 class Sugar(models.Model):
     quantity = models.IntegerField()
     unit_price = models.IntegerField()
@@ -164,10 +148,7 @@ class Sugar(models.Model):
 
     def __str__(self):
         return self.user.username
-<<<<<<< HEAD
 
-=======
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
     class Meta:
         ordering = ['-sell_time']
 
@@ -175,18 +156,16 @@ class Sugar(models.Model):
     def get_all_sugar_sales(cls):
         all_sugar = Sugar.objects.all()
         return all_sugar
-<<<<<<< HEAD
 
     @classmethod
     def get_total_amount(cls):
         total_amount = Sugar.objects.values(
             'unit_price') * Sugar.objects.values('quantity')
-=======
-    
+
     @classmethod
     def get_total_amount(cls):
-        total_amount = Sugar.objects.values('unit_price') * Sugar.objects.values('quantity')
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
+        total_amount = Sugar.objects.values(
+            'unit_price') * Sugar.objects.values('quantity')
         return total_amount
 
     @classmethod
@@ -195,7 +174,14 @@ class Sugar(models.Model):
         return lowest_price
 
     @classmethod
-<<<<<<< HEAD
+    def get_single_sugar(cls, pk):
+        single_sugar = Sugar.objects.filter(pk=pk)
+
+    @classmethod
+    def get_user_sugar(cls, user_id):
+        user_sugar = Sugar.objects.filter(user=user.id).all()
+        return user_sugar
+
     def get_single_sugar(cls, pk):
         single_sugar = Sugar.objects.filter(pk=pk)
 
@@ -205,16 +191,6 @@ class Sugar(models.Model):
         return user_sugar
 
 
-=======
-    def get_single_sugar(cls,pk):
-        single_sugar  = Sugar.objects.filter(pk=pk)
-
-    @classmethod
-    def get_user_sugar(cls,user_id):
-        user_sugar = Sugar.objects.filter(user=user.id).all()
-        return user_sugar
-
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
 class Cotton(models.Model):
     quantity = models.IntegerField()
     unit_price = models.IntegerField()
@@ -224,10 +200,7 @@ class Cotton(models.Model):
 
     def __str__(self):
         return self.user.username
-<<<<<<< HEAD
 
-=======
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
     class Meta:
         ordering = ['-sell_time']
 
@@ -235,18 +208,16 @@ class Cotton(models.Model):
     def get_all_cotton_sales(cls):
         all_cotton = Cotton.objects.all()
         return all_cotton
-<<<<<<< HEAD
 
     @classmethod
     def get_total_amount(cls):
         total_amount = Cotton.objects.values(
             'unit_price') * Cottton.objects.values('quantity')
-=======
-    
+
     @classmethod
     def get_total_amount(cls):
-        total_amount = Cotton.objects.values('unit_price') * Cottton.objects.values('quantity')
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
+        total_amount = Cotton.objects.values(
+            'unit_price') * Cottton.objects.values('quantity')
         return total_amount
 
     @classmethod
@@ -255,19 +226,11 @@ class Cotton(models.Model):
         return lowest_price
 
     @classmethod
-<<<<<<< HEAD
     def get_single_cotton(cls, pk):
         single_cotton = Cotton.objects.filter(pk=pk)
 
     @classmethod
     def get_user_cotton(cls, user_id):
-=======
-    def get_single_cotton(cls,pk):
-        single_cotton  = Cotton.objects.filter(pk=pk)
-
-    @classmethod
-    def get_user_cotton(cls,user_id):
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
         user_cotton = Cotton.objects.filter(user=user.id).all()
         return user_cotton
 
@@ -304,13 +267,13 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-<<<<<<< HEAD
-=======
 
 class Sell(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'sell')
-    product =  models.ForeignKey(Product,on_delete=models.CASCADE, related_name= 'sell')
->>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='sell')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='sell')
+
 
 class Sell(models.Model):
     user = models.ForeignKey(
