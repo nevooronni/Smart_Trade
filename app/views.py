@@ -9,6 +9,7 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 
 
@@ -22,15 +23,13 @@ def landing_page(request):
     lowest_price = Wheat.get_lowest_price()
     print(lowest_price.get("unit_price__min"))
     price = lowest_price.get("unit_price__min")
+    # retail_price = (price * 5/100) + price
 
     def change(price):
         list_prices = []
         list_prices.append(price)
         print(list_prices)
         change = list_prices[-1] - list_prices[-2]
-
-        return change
-
     current_user = request.user
     current_profile = current_user.profile
 
@@ -114,7 +113,12 @@ def landing_page(request):
 
         cotton_form = CottonForm()
 
-    return render(request, 'all-app/landing_page.html', {"wheat_products": wheat_products, "change": change, "price": price, "form": form, "buy_form": buy_form, "coffee_products": coffee_products, "coffee_price": coffee_price, "coffee_form": coffee_form, "sugar_price": sugar_price, "sugar_form": sugar_form, "cotton_form": cotton_form, "cotton_price": cotton_price, "current_user": current_user, })
+    cartitems = CartItem.get_all_cartitems()
+    total = CartItem.get_total_price()
+    print(total.get("subtotal__sum"))
+    total_cost = total.get("subtotal__sum")
+
+    return render(request, 'all-app/landing_page.html', {"total_cost": total_cost, "cartitems": cartitems, "wheat_products": wheat_products, "change": change, "price": price, "form": form, "buy_form": buy_form, "coffee_products": coffee_products, "coffee_price": coffee_price, "coffee_form": coffee_form, "sugar_price": sugar_price, "sugar_form": sugar_form, "cotton_form": cotton_form, "cotton_price": cotton_price, "current_user": current_user, })
 
 
 @login_required(login_url='/accounts/login/')
@@ -163,20 +167,34 @@ def buy(request):
     current_user = request.user
     current_profile = current_user.profile
 
+    wheat_name = 'wheat'
+    lowest_price = Wheat.get_lowest_price()
+    print(lowest_price.get("unit_price__min"))
+    wheat_price = lowest_price.get("unit_price__min")
+
     if request.method == 'POST':
-        buy_form = BuyForm(request.POST, request.FILES)
+        buy_form = CartItemForm(request.POST, request.FILES)
 
         if buy_form.is_valid():
             buy = buy_form.save(commit=False)
             buy.user = current_user
             buy.profile = current_profile
+            buy.name = wheat_name
+            buy.price = wheat_price
+            buy.subtotal = buy.price * buy.quantity
             buy.save()
 
             return redirect(landing_page)
 
         else:
 
-            buy_form = BuyForm()
+            buy_form = CartItemForm()
+
+
+@login_required(login_url='/accounts/login/')
+def remove_buy(request):
+    current_user = request.user
+    current_profile = current_user.profile
 
 
 @login_required(login_url='/accounts/login/')
@@ -239,49 +257,36 @@ def sell_cotton(request):
         cotton_form = CottonForm()
 
 
-@login_required(login_url='/accounts/login')
-def add_to_cart(request, product_id, quantity):
-    product = Product.objects.get(id=product_id)
-    cart = Cart(request)
-    cart.add(product, product.unit_price, quantity)
+@login_required(login_url='/accounts/login/')
+def place_order(request):
+    current_user = request.user
+    current_profile = current_user.profile
+    account_balance = current_user.profile.account
 
+    cartitems = CartItem.get_all_cartitems()
+    total = CartItem.get_total_price()
+    print(total.get("subtotal__sum"))
+    total_cost = total.get("subtotal__sum")
 
-@login_required(login_url='/accounts/login')
-def remove_from_cart(request, product_id):
-    product = Product.objects.get(id=product_id)
-    cart = Cart(request)
-    cart.remove(product)
+    transaction_cost = total_cost + (total_cost * 0.05)
 
+    if transaction_cost <= account_balance:
+        new_account_balance = account_balance - transaction_cost
+        return new_account_balance
 
-@login_required(login_url='/accounts/login')
-def get_cart(request):
-    return render_to_response('cart.html', dict(cart=Cart(request)))
-
-
-@login_required
-def profile(request, user_id):
-    user = User.objects.get(pk=user_id)
-    user.profile.username = 'first_name, last_name'
-    user.save()
-
-
-@login_required
-def update_profile(request):
-    if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            messages.success(request, _(
-                'Your profile was successfully updated!'))
-            return redirect('settings:profile')
-        else:
-            messages.error(request, _('Please correct the error below.'))
     else:
-        user_form = UserForm(instance=request.user)
-        profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'profiles/profile.html', {
-        'user_form': user_form,
-        'profile_form': profile_form
-    })
+        please_topup = "Sorry you do not have enough funds in your account to complete the transaction please topup to continue!"
+
+        return please_topup
+
+    return redirect(landing_page)
+
+
+@login_required(login_url='/accounts/login/')
+def remove_item(request, id):
+    current_user = request.user
+    current_profile = current_user.profile
+
+    item_removed = CartItem.remove_cartitem(id=id)
+
+    return redirect(landing_page)

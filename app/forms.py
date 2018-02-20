@@ -1,8 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
+<<<<<<< HEAD
 from .models import Profile, Wheat, Coffee, Sugar, Cotton, Profile
 
+=======
+from .models import Profile,Wheat,Coffee,Sugar,Cotton,CartItem
+>>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
 
 class SellForm(forms.ModelForm):
     class Meta:
@@ -11,6 +15,7 @@ class SellForm(forms.ModelForm):
 
 
 class CoffeeForm(forms.ModelForm):
+<<<<<<< HEAD
     class Meta:
         model = Coffee
         fields = ('unit_price', 'quantity',)
@@ -44,3 +49,23 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('first_name', 'location', 'phone_number')
+=======
+	class Meta:
+		model = Coffee
+		fields = ('unit_price','quantity',)
+
+class SugarForm(forms.ModelForm):
+	class Meta:
+		model = Sugar
+		fields = ('unit_price','quantity',)
+
+class CottonForm(forms.ModelForm):
+	class Meta:
+		model = Cotton
+		fields = ('unit_price','quantity',)
+
+class CartItemForm(forms.ModelForm):
+	class Meta:
+		model = CartItem
+		fields = ('quantity',)
+>>>>>>> f9ceec8d816b3947c3fe4da81d966e46db29bf92
